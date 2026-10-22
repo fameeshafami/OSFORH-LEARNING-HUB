@@ -11,9 +11,9 @@ npm run preview
 ```
 
 ## Deploy to GitHub Pages
-1. Push this folder to the `main` branch of your repo (e.g. `osforhlearninghub-2026`).
-2. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Every push to `main` runs `.github/workflows/deploy.yml` (npm ci → build → publish `dist/`).
+1. In the repository, open **Settings → Pages** and choose **GitHub Actions** under **Build and deployment → Source**. Do not select `main` or the repository root: Vite source files need to be built before publishing.
+2. Push this folder to the `main` branch. The `.github/workflows/deploy.yml` workflow configures Pages, builds the site, and publishes `dist/` on each push.
+3. Check the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow to finish successfully before opening the site.
 
 The site is served from `https://<user>.github.io/<repo>/`. `vite.config.js` uses `base: './'` and the app uses
 `HashRouter`, so every page (`/#/contact`, `/#/courses/digital-marketing` …) works on Pages with no 404s.
