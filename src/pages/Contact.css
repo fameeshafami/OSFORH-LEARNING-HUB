@@ -1,0 +1,594 @@
+/* ==========================================================================
+   Contact Page Styles
+   Theme: Osforh Learning Hub (Beegains-inspired Green + K2D Font)
+   ========================================================================== */
+
+.ct-page {
+  font-family: 'K2D', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink, #183222);
+  background-color: var(--bg, #F2F8F1);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. Contact Hero Section
+   ========================================================================== */
+.ct-hero {
+  position: relative;
+  background: radial-gradient(120% 120% at 50% -20%, #2B5D36 0%, #1E4528 70%, #122b19 100%);
+  color: #ffffff;
+  padding: clamp(60px, 9vw, 110px) clamp(20px, 5vw, 60px) clamp(50px, 7vw, 90px);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.ct-hero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+.ct-hero__blob--1 {
+  width: 440px;
+  height: 440px;
+  background: #59B346;
+  top: -140px;
+  right: -60px;
+  animation: ctFloat 14s ease-in-out infinite alternate;
+}
+.ct-hero__blob--2 {
+  width: 360px;
+  height: 360px;
+  background: #A6D99A;
+  bottom: -90px;
+  left: -60px;
+  animation: ctFloat 18s ease-in-out infinite alternate-reverse;
+}
+
+.ct-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ct-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(166, 217, 154, 0.16);
+  border: 1px solid rgba(166, 217, 154, 0.4);
+  color: #A6D99A;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+.ct-hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #59B346;
+  box-shadow: 0 0 10px #59B346;
+  animation: ctPulse 2s infinite;
+}
+
+.ct-hero__title {
+  font-size: clamp(34px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  color: #ffffff;
+}
+
+.ct-hero__lead {
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 680px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   2. Main Interactive Layout (Grid)
+   ========================================================================== */
+.ct-section {
+  padding: clamp(50px, 7vw, 90px) clamp(20px, 5vw, 60px);
+}
+.ct-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 60px);
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .ct-grid {
+    grid-template-columns: 1.05fr 1fr;
+  }
+}
+
+/* ==========================================================================
+   3. Left Side: Advisor & Info Hub
+   ========================================================================== */
+.ct-info-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ct-info-hub__header h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--ink, #183222);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+.ct-info-hub__header h2 em {
+  font-style: normal;
+  color: var(--accent, #2B5D36);
+  position: relative;
+  display: inline-block;
+}
+.ct-info-hub__header h2 em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 8px;
+  background: var(--primary, #A6D99A);
+  opacity: 0.55;
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.ct-info-hub__header p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--soft, #496152);
+  margin: 0;
+}
+
+/* Direct Contact Action Cards */
+.ct-contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ct-contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--line, #D6E6D3);
+  text-decoration: none;
+  color: var(--ink, #183222);
+  box-shadow: 0 8px 24px -6px rgba(27, 69, 40, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ct-contact-card:hover {
+  transform: translateX(6px);
+  border-color: var(--leaf, #59B346);
+  box-shadow: 0 12px 30px -6px rgba(43, 93, 54, 0.16);
+  background: #FFFFFF;
+}
+
+.ct-contact-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #59B346, #2B5D36);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(43, 93, 54, 0.25);
+}
+.ct-contact-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ct-contact-card__content {
+  flex: 1;
+}
+.ct-contact-card__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mute, #6C7E70);
+  margin-bottom: 2px;
+}
+.ct-contact-card__val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink, #183222);
+  line-height: 1.35;
+}
+
+.ct-contact-card__arrow {
+  color: var(--accent, #2B5D36);
+  font-size: 18px;
+  transition: transform 0.25s ease;
+}
+.ct-contact-card:hover .ct-contact-card__arrow {
+  transform: translateX(4px);
+}
+
+/* Why Choose Us Mini Cards */
+.ct-why-block {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 28px 24px;
+  border: 1px solid var(--line, #D6E6D3);
+  box-shadow: 0 10px 30px -8px rgba(27, 69, 40, 0.06);
+}
+.ct-why-block__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent, #2B5D36);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ct-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 600px) {
+  .ct-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.ct-why-item {
+  background: #F8FBF7;
+  border: 1px solid #E4EFE2;
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.25s ease;
+}
+.ct-why-item:hover {
+  background: #ffffff;
+  border-color: #59B346;
+  transform: translateY(-2px);
+}
+.ct-why-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #183222);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+.ct-why-item p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--soft, #496152);
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. Right Side: Elevated Interactive Form
+   ========================================================================== */
+.ct-form-card {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid var(--line, #D6E6D3);
+  box-shadow: 0 24px 60px -15px rgba(27, 69, 40, 0.12);
+  position: relative;
+}
+
+.ct-form-card__header {
+  margin-bottom: 26px;
+}
+.ct-form-card__badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #2B5D36;
+  background: #E2F2DF;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.ct-form-card__title {
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 800;
+  color: var(--ink, #183222);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.ct-form-card__desc {
+  font-size: 14px;
+  color: var(--soft, #496152);
+  margin: 0;
+}
+
+/* Form inputs & styling */
+.ct-form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.ct-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink, #183222);
+  margin-bottom: 6px;
+}
+
+.ct-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ct-input-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--mute, #6C7E70);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ct-input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ct-input,
+.ct-select,
+.ct-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink, #183222);
+  background: #F8FBF7;
+  border: 1.5px solid var(--line, #D6E6D3);
+  border-radius: 16px;
+  padding: 13px 16px 13px 44px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.ct-textarea {
+  padding-left: 16px;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.ct-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232B5D36' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+.ct-input:focus,
+.ct-select:focus,
+.ct-textarea:focus {
+  background: #ffffff;
+  border-color: var(--accent, #2B5D36);
+  box-shadow: 0 0 0 4px rgba(43, 93, 54, 0.12);
+}
+
+.ct-error {
+  display: block;
+  font-size: 12px;
+  color: #d32f2f;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* Submit Button */
+.ct-submit-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2B5D36, #1E4528);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 15px 28px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(43, 93, 54, 0.28);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 8px;
+}
+.ct-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(43, 93, 54, 0.38);
+  background: linear-gradient(135deg, #59B346, #2B5D36);
+}
+.ct-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.ct-submit-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ct-status-msg {
+  font-size: 13px;
+  color: var(--soft, #496152);
+  text-align: center;
+  margin: 14px 0 0;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Trust footer beneath form */
+.ct-form-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #EDF4EC;
+  font-size: 12px;
+  color: var(--mute, #6C7E70);
+  font-weight: 600;
+}
+.ct-form-trust span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ==========================================================================
+   5. Interactive Map & Campus Location Section
+   ========================================================================== */
+.ct-map-card {
+  margin-top: 48px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid var(--line, #D6E6D3);
+  padding: clamp(24px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 16px 40px -10px rgba(27, 69, 40, 0.08);
+}
+@media (min-width: 800px) {
+  .ct-map-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.ct-map-card__info h3 {
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 800;
+  color: var(--ink, #183222);
+  margin: 0 0 6px;
+}
+.ct-map-card__info p {
+  font-size: 14px;
+  color: var(--soft, #496152);
+  margin: 0;
+}
+.ct-map-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent, #2B5D36);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(43, 93, 54, 0.25);
+  flex-shrink: 0;
+}
+.ct-map-card__btn:hover {
+  background: var(--leaf, #59B346);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   6. Feedback Callout Banner ("Your story could be here")
+   ========================================================================== */
+.ct-feedback-box {
+  margin-top: 40px;
+  background: radial-gradient(100% 100% at 50% 0%, #F4FAF2 0%, #E8F4E6 100%);
+  border: 1px solid var(--line, #D6E6D3);
+  border-radius: 28px;
+  padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 40px);
+  text-align: center;
+  box-shadow: 0 14px 36px -10px rgba(27, 69, 40, 0.08);
+}
+.ct-feedback-box h3 {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  color: var(--ink, #183222);
+  margin: 0 0 10px;
+}
+.ct-feedback-box p {
+  font-size: 15px;
+  color: var(--soft, #496152);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+.ct-feedback-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--accent, #2B5D36);
+  border: 2px solid var(--accent, #2B5D36);
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.ct-feedback-btn:hover {
+  background: var(--accent, #2B5D36);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes ctFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-16px) scale(1.04); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes ctPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-hero__blob,
+  .ct-hero__eyebrow-dot,
+  .ct-contact-card,
+  .ct-why-item,
+  .ct-submit-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
