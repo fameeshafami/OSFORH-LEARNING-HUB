@@ -399,15 +399,17 @@ h3 {
   left: 0;
   right: 0;
   bottom: 6%;
+  padding-right: 300px;
   text-align: center;
   font-weight: 900;
-  font-size: clamp(100px, 21vw, 280px);
+  font-size: clamp(85px, 19vw, 269px);
+  /* font-size: clamp(60px, 13vw, 170px); */
   letter-spacing: -.05em;
   line-height: 1;
   color: rgba(64, 84, 178, .13);
   user-select: none;
   z-index: 1;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 .bgt .l {
@@ -520,8 +522,9 @@ h3 {
 }
 
 .sub {
-  margin-top: 14px;
-  font: 400 clamp(1rem, 1.5vw, 1.2rem)/1.4 var(--slab);
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font: 400 clamp(.9rem, 1.1vw, 1.05rem)/1.4 var(--slab);
   color: var(--soft);
   max-width: 34ch
 }
@@ -531,9 +534,10 @@ h3 {
   top: 62%;
   left: 3%;
   display: flex;
-  gap: 8px;
+  gap: 9px;
   flex-wrap: wrap;
-  z-index: 4
+  z-index: 4;
+  margin-top:25px;
 }
 
 .note {
@@ -545,7 +549,8 @@ h3 {
   z-index: 4;
   display: flex;
   gap: 8px;
-  align-items: center
+  align-items: center;
+  margin-top:60px;
 }
 
 .note::before {
