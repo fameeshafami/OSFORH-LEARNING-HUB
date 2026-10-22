@@ -107,7 +107,7 @@ const HERO_STYLE = `
 
 /* the woman */
 .hv .hv-person{
-  position:absolute; left:50%; bottom:0; translate:-34% 0;
+  position:absolute; left:50%; bottom:0; translate:-34% 0; padding-left:200px;
   height:100%; width:auto; max-width:none; z-index:5;
   filter:drop-shadow(0 16px 24px rgba(0,0,0,.18));
   animation:hvBob 2.4s ease-in-out infinite;
