@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import gsap from 'gsap'
 import Reasons from '../components/Reasons.jsx'
 import AboutGrowthSection from '../components/AboutGrowthSection.jsx'
 
@@ -137,58 +136,79 @@ export default function Home() {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) return
 
-    let raf
-    let onMove
-    let onLeave
+    let cancelled = false
+    let cleanup = () => {}
     const hero = heroRef.current
-
-    const ctx = gsap.context(() => {
-      gsap.set('#h1 .ln>span', { y: '105%' })
-      gsap.set('#bgt .l', { y: 60, opacity: 0 })
-      gsap.set('#fig', { y: 90, opacity: 0 })
-      gsap.set('#glow', { opacity: 0, scale: 0.6 })
-      gsap.set('#sb,#ct,#nt', { opacity: 0, y: 20 })
-
-      gsap
-        .timeline({ defaults: { ease: 'power3.out' } })
-        .to('#glow', { opacity: 1, scale: 1, duration: 1.1 }, 0.2)
-        .to('#fig', { opacity: 1, y: 0, duration: 1.2, ease: 'back.out(1.3)' }, 0.2)
-        .to('#bgt .l', { y: 0, opacity: 1, duration: 0.9, stagger: 0.07, ease: 'back.out(1.4)' }, 0.3)
-        .to('#h1 .ln>span', { y: '0%', duration: 0.9, stagger: 0.12 }, 0.7)
-        .to('#sb', { opacity: 1, y: 0, duration: 0.7 }, 1.1)
-        .to('#ct', { opacity: 1, y: 0, duration: 0.7 }, 1.2)
-        .to('#nt', { opacity: 1, y: 0, duration: 0.6 }, 1.35)
-    }, hero)
-
-    // parallax
+    let raf = null
     let mx = 0
     let my = 0
     let tx = 0
     let ty = 0
-    onMove = (e) => {
+
+    const updateParallax = () => {
+      tx += (mx - tx) * 0.08
+      ty += (my - ty) * 0.08
+      if (bgtRef.current) bgtRef.current.style.translate = `${tx * 22}px ${ty * 10}px`
+
+      if (Math.abs(mx - tx) > 0.001 || Math.abs(my - ty) > 0.001) {
+        raf = requestAnimationFrame(updateParallax)
+      } else {
+        tx = mx
+        ty = my
+        raf = null
+      }
+    }
+    const requestParallaxUpdate = () => {
+      if (raf === null) raf = requestAnimationFrame(updateParallax)
+    }
+    const onMove = (e) => {
       const r = hero.getBoundingClientRect()
       mx = ((e.clientX - r.left) / r.width - 0.5) * 2
       my = ((e.clientY - r.top) / r.height - 0.5) * 2
+      requestParallaxUpdate()
     }
-    onLeave = () => {
+    const onLeave = () => {
       mx = my = 0
+      requestParallaxUpdate()
     }
-    hero.addEventListener('mousemove', onMove)
-    hero.addEventListener('mouseleave', onLeave)
 
-    const par = () => {
-      raf = requestAnimationFrame(par)
-      tx += (mx - tx) * 0.06
-      ty += (my - ty) * 0.06
-      if (bgtRef.current) bgtRef.current.style.translate = tx * 22 + 'px ' + ty * 10 + 'px'
-    }
-    par()
+    import('gsap')
+      .then(({ default: gsap }) => {
+        if (cancelled) return
+        const ctx = gsap.context(() => {
+          gsap.set('#h1 .ln>span', { y: '105%' })
+          gsap.set('#bgt .l', { y: 60, opacity: 0 })
+          gsap.set('#fig', { y: 90, opacity: 0 })
+          gsap.set('#glow', { opacity: 0, scale: 0.6 })
+          gsap.set('#sb,#ct,#nt', { opacity: 0, y: 20 })
+
+          gsap
+            .timeline({ defaults: { ease: 'power3.out' } })
+            .to('#glow', { opacity: 1, scale: 1, duration: 1.1 }, 0.2)
+            .to('#fig', { opacity: 1, y: 0, duration: 1.2, ease: 'back.out(1.3)' }, 0.2)
+            .to('#bgt .l', { y: 0, opacity: 1, duration: 0.9, stagger: 0.07, ease: 'back.out(1.4)' }, 0.3)
+            .to('#h1 .ln>span', { y: '0%', duration: 0.9, stagger: 0.12 }, 0.7)
+            .to('#sb', { opacity: 1, y: 0, duration: 0.7 }, 1.1)
+            .to('#ct', { opacity: 1, y: 0, duration: 0.7 }, 1.2)
+            .to('#nt', { opacity: 1, y: 0, duration: 0.6 }, 1.35)
+        }, hero)
+
+        hero.addEventListener('pointermove', onMove)
+        hero.addEventListener('pointerleave', onLeave)
+        cleanup = () => {
+          if (raf !== null) cancelAnimationFrame(raf)
+          hero.removeEventListener('pointermove', onMove)
+          hero.removeEventListener('pointerleave', onLeave)
+          ctx.revert()
+        }
+      })
+      .catch((error) => {
+        console.error('Unable to load homepage animation.', error)
+      })
 
     return () => {
-      cancelAnimationFrame(raf)
-      hero.removeEventListener('mousemove', onMove)
-      hero.removeEventListener('mouseleave', onLeave)
-      ctx.revert()
+      cancelled = true
+      cleanup()
     }
   }, [])
 
@@ -197,10 +217,27 @@ export default function Home() {
     const wide = window.matchMedia('(min-width: 960px)')
     const calm = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const saver = navigator.connection && navigator.connection.saveData
-    const update = () => setPlayVideo(wide.matches && calm && !saver)
+    let loaded = document.readyState === 'complete'
+    let timer
+    const update = () => {
+      window.clearTimeout(timer)
+      setPlayVideo(false)
+      if (wide.matches && calm && !saver && loaded) {
+        timer = window.setTimeout(() => setPlayVideo(true), 2500)
+      }
+    }
+    const onLoad = () => {
+      loaded = true
+      update()
+    }
     update()
     wide.addEventListener('change', update)
-    return () => wide.removeEventListener('change', update)
+    window.addEventListener('load', onLoad, { once: true })
+    return () => {
+      window.clearTimeout(timer)
+      wide.removeEventListener('change', update)
+      window.removeEventListener('load', onLoad)
+    }
   }, [])
 
   return (
