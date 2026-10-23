@@ -917,28 +917,32 @@
     padding: 50px 16px;
   }
   .cd-page .feature-bar {
-    flex-wrap: wrap;
-    border-radius: 20px;
-    padding: 18px 14px;
-    gap: 12px;
-    justify-content: center;
+    flex-wrap: nowrap;
+    border-radius: 14px;
+    padding: 10px 12px;
+    gap: 4px;
+    justify-content: space-around;
     max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
+  .cd-page .feature-bar::-webkit-scrollbar { display: none; }
   .cd-page .feature {
-    width: calc(50% - 10px);
-    font-size: 13px;
+    flex: 1 0 0;
+    min-width: 0;
+    font-size: 11px;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 6px;
-    min-width: 0;
+    gap: 4px;
+    white-space: nowrap;
   }
   .cd-page .feature i {
-    font-size: 24px;
+    font-size: 20px;
   }
   .cd-page .feature svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
   .cd-page .hero-tools-strip {
     gap: 8px;
@@ -976,12 +980,14 @@
     padding: 40px 14px;
   }
   .cd-page .feature {
-    font-size: 12px;
-    gap: 5px;
+    font-size: 10px;
+    gap: 3px;
   }
   .cd-page .feature-bar {
-    padding: 14px 12px;
-    gap: 10px;
-    border-radius: 16px;
+    padding: 8px 10px;
+    gap: 2px;
+    border-radius: 12px;
   }
+  .cd-page .feature i { font-size: 18px; }
+  .cd-page .feature svg { width: 18px !important; height: 18px !important; }
 }

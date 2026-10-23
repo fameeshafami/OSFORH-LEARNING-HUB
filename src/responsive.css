@@ -920,11 +920,18 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-radius: 16px;
-    flex-wrap: wrap;
-    gap: 12px;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .cd-page .feature { color: #215714; }
+  .cd-page .feature-bar::-webkit-scrollbar { display: none; }
+  .cd-page .feature { color: #215714; flex: 1 0 0; min-width: 0; flex-direction: column; align-items: center; text-align: center; font-size: 11px; gap: 3px; white-space: nowrap; }
+  .cd-page .feature i { font-size: 18px; }
+  .cd-page .feature svg { width: 18px !important; height: 18px !important; }
+  .cd-page .feature .feature-label { white-space: normal; font-size: 10px; line-height: 1.2; }
   .cd-crumb { flex-wrap: wrap; }
   .wd-device-controls { display: flex; flex-wrap: wrap; gap: 8px; }
   .wd-device-btn { flex: 1 1 140px; min-height: var(--tap); }
@@ -935,7 +942,7 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .cd-page .course-hero-image { max-height: 250px; border-radius: 16px; }
   .cd-page .hero-cta-group { flex-direction: column; align-items: stretch; width: 100%; }
   .cd-page .hero-cta-group a { width: 100%; }
-  .cd-page .feature-bar { padding: 16px; border-radius: 14px; }
+  .cd-page .feature-bar { padding: 8px 10px; border-radius: 10px; gap: 2px; flex-wrap: nowrap; }
 }
 
 /* ---------- Forms (Contact) ---------- */

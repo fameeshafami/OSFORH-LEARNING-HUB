@@ -5,10 +5,9 @@
 
 .tm-page {
   font-family: 'K2D', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--ink, #215714);
-  background-color: var(--bg, #FFFFFF);
+  color: #215714;
+  background-color: #FFFFFF;
   overflow-x: hidden;
-  /* Let every testimonial section extend beyond the shared page gutter. */
   width: 100%;
 }
 
@@ -569,7 +568,7 @@
    4. Section 3: What Our Students Say (Testimonials)
    ========================================================================== */
 .tm-reviews-section {
-  background: var(--bg, #FFFFFF);
+  background: #FFFFFF;
 }
 
 .tm-reviews-header {
@@ -580,14 +579,14 @@
 .tm-reviews-heading {
   font-size: clamp(24px, 5vw, 54px);
   font-weight: 800;
-  color: var(--ink, #215714);
+  color: #215714;
   margin: 0 0 14px;
   letter-spacing: -0.02em;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 .tm-reviews-heading span {
-  color: #215714;
+  color: #1a4510;
 }
 
 /* Filter pills */
@@ -600,13 +599,13 @@
   margin-bottom: 40px;
 }
 .tm-filter-tab {
-  border: 1px solid var(--line, rgba(33, 87, 20, 0.18));
+  border: 1.5px solid rgba(33, 87, 20, 0.3);
   background: #ffffff;
-  color: var(--soft, #215714);
+  color: #215714;
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: inherit;
@@ -687,7 +686,7 @@
 .tm-review-card__title {
   font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 800;
-  color: var(--accent, #215714);
+  color: #215714;
   margin: 0 0 14px;
   line-height: 1.3;
 }

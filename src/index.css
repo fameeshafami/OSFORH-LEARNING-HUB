@@ -9,7 +9,7 @@
   --green: #215714;
   --dgreen: #215714;
   --leaf: #215714;
-  --bg: #fffff;
+  --bg: #FFFFFF;
   --card: #FFFFFF;
   --ink: #215714;
   --soft: #215714;
@@ -56,11 +56,11 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: #FFFFFF;
   color: var(--ink);
   font: 400 1rem/1.55 var(--font);
   overflow-x: hidden;
-  padding: 18px;
+  padding: 0;
   -webkit-font-smoothing: antialiased
 }
 

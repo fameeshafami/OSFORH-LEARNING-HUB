@@ -5,8 +5,8 @@
 
 .ct-page {
   font-family: 'K2D', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--ink, #215714);
-  background-color: var(--bg, #FFFFFF);
+  color: #215714;
+  background-color: #FFFFFF;
   overflow-x: hidden;
 }
 
@@ -133,14 +133,14 @@
 .ct-info-hub__header h2 {
   font-size: clamp(30px, 4vw, 48px);
   font-weight: 800;
-  color: var(--ink, #215714);
+  color: #215714;
   line-height: 1.2;
   margin: 0 0 12px;
   letter-spacing: -0.02em;
 }
 .ct-info-hub__header h2 em {
   font-style: normal;
-  color: var(--accent, #215714);
+  color: #1a4510;
   position: relative;
   display: inline-block;
 }
@@ -160,7 +160,7 @@
 .ct-info-hub__header p {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--soft, #215714);
+  color: #3a6b30;
   margin: 0;
 }
 
@@ -215,13 +215,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--mute, #215714);
+  color: #3a6b30;
   margin-bottom: 2px;
 }
 .ct-contact-card__val {
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink, #215714);
+  color: #215714;
   line-height: 1.35;
 }
 
@@ -317,13 +317,13 @@
 .ct-form-card__title {
   font-size: clamp(24px, 2.6vw, 32px);
   font-weight: 800;
-  color: var(--ink, #215714);
+  color: #215714;
   margin: 0 0 6px;
   line-height: 1.2;
 }
 .ct-form-card__desc {
   font-size: 14px;
-  color: var(--soft, #215714);
+  color: #3a6b30;
   margin: 0;
 }
 
@@ -556,12 +556,12 @@
 .ct-map-card__info h3 {
   font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 800;
-  color: var(--ink, #215714);
+  color: #215714;
   margin: 0 0 6px;
 }
 .ct-map-card__info p {
   font-size: 14px;
-  color: var(--soft, #215714);
+  color: #3a6b30;
   margin: 0;
 }
 .ct-map-card__btn {
@@ -601,12 +601,12 @@
 .ct-feedback-box h3 {
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 800;
-  color: var(--ink, #215714);
+  color: #215714;
   margin: 0 0 10px;
 }
 .ct-feedback-box p {
   font-size: 15px;
-  color: var(--soft, #215714);
+  color: #3a6b30;
   max-width: 600px;
   margin: 0 auto 24px;
   line-height: 1.6;
