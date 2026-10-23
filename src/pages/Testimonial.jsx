@@ -1,5 +1,6 @@
 import { useState, useId } from 'react'
 import { Link } from 'react-router-dom'
+import { asset } from '../lib/asset.js'
 import {
   heroFeatures,
   whyTrustUs,
@@ -91,7 +92,7 @@ export default function Testimonial() {
   }
 
   return (
-    <div className="tm-page">
+    <div className="tm-page" style={{ '--tm-hero-bg': `url("${asset('img/testimonial-bg.webp')}")` }}>
       {/* ================================================================
           1. Hero Section: "Testimonial | Digital Marketing Institute"
           ================================================================ */}

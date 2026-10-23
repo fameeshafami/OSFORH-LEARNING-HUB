@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { asset } from '../lib/asset.js'
 
 const REASON_ITEMS = [
   {
@@ -8,7 +9,7 @@ const REASON_ITEMS = [
     highlights: ['Beginner to Advanced', 'Industry-Recognized Curriculum'],
     tone: 'leaf',
     badgeNumber: '01',
-    icon: '/img/benefits/curriculum.png',
+    icon: 'img/benefits/curriculum.png',
   },
   {
     title: 'Practical Approach',
@@ -16,7 +17,7 @@ const REASON_ITEMS = [
     highlights: ['Mentor-Led Training', 'Expert Guidance', 'Hands-On Projects'],
     tone: 'green',
     badgeNumber: '02',
-    icon: '/img/benefits/practical-approach.png',
+    icon: 'img/benefits/practical-approach.png',
   },
   {
     title: 'Unlimited Internship',
@@ -24,7 +25,7 @@ const REASON_ITEMS = [
     highlights: ['Capstone Projects', 'Live Projects', 'Practical Experience'],
     tone: 'mint',
     badgeNumber: '03',
-    icon: '/img/benefits/internship.png',
+    icon: 'img/benefits/internship.png',
   },
   {
     title: 'Placement Assistance',
@@ -32,7 +33,7 @@ const REASON_ITEMS = [
     highlights: ['Resume Preparation', 'Interview Techniques', 'Career Guidance'],
     tone: 'deep',
     badgeNumber: '04',
-    icon: '/img/benefits/placement-support.png',
+    icon: 'img/benefits/placement-support.png',
   },
   {
     title: 'Career Opportunities',
@@ -40,7 +41,7 @@ const REASON_ITEMS = [
     highlights: ['Placement Opportunities', 'Industry Connections', 'Career Growth'],
     tone: 'leaf',
     badgeNumber: '05',
-    icon: '/img/benefits/career-opportunities.png',
+    icon: 'img/benefits/career-opportunities.png',
   },
 ]
 
@@ -817,7 +818,12 @@ export default function Reasons() {
   }, [])
 
   return (
-    <section className="rs bee-reasons-root" id="reasons" ref={containerRef}>
+    <section
+      className="rs bee-reasons-root"
+      id="reasons"
+      ref={containerRef}
+      style={{ '--reasons-bg': `url("${asset('img/reasons-bg.png')}")` }}
+    >
       <style>{BEE_STYLE}</style>
 
       <div className="bee-shell">
@@ -891,7 +897,7 @@ export default function Reasons() {
 
                 <div className="bee-card-content">
                   <span className="bee-icon-box" aria-hidden="true">
-                    <img className="bee-card-icon" src={item.icon} alt="" />
+                    <img className="bee-card-icon" src={asset(item.icon)} alt="" />
                   </span>
                   <div className="bee-card-body">
                     <h3>{item.title}</h3>

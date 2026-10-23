@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('/img/testimonial-bg.webp') center / cover no-repeat;
+  background: var(--tm-hero-bg) center / cover no-repeat;
   background-attachment: fixed;
   color: #ffffff;
   padding: 40px clamp(20px, 4vw, 50px);

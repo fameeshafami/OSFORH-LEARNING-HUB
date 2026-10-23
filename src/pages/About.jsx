@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { asset } from '../lib/asset.js'
 
 const POINTS = [
   'Project-based learning',
@@ -393,7 +394,7 @@ export default function About() {
             </div>
           </div>
           <div className="about-hero-mark" aria-hidden="true">
-            <img src="/img/b6c434fe-6efe-478e-a901-0384ec9041b7%20(1).png" alt="" />
+            <img src={asset('img/b6c434fe-6efe-478e-a901-0384ec9041b7 (1).png')} alt="" />
           </div>
         </div>
       </header>
