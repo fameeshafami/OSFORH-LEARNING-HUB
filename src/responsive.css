@@ -98,6 +98,8 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 
 /* tablet & mobile navigation */
 @media (max-width: 900px) {
+  .nav { background: #FFFFFF; }
+  .nav .links { background: #FFFFFF; }
   .nav { border-radius: 28px; padding: 8px 10px 8px 16px; }
   .nav .logo { flex: 0 0 auto; }
   .nav .logo picture { display: block; width: clamp(112px, 36vw, 150px); }
@@ -134,11 +136,11 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 /* ---------- Home hero ---------- */
 .hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   height: 100svh;
   min-height: 0;
-  margin-left: calc(50% - 50vw);
+  margin-left: 0;
   padding: clamp(28px, 5vw, 72px) clamp(24px, 7vw, 120px);
   border-radius: 0;
   background:
@@ -562,7 +564,7 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .home-hero .hero-eyebrow { margin-bottom: 22px; }
   .home-hero .hl h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
   .home-hero .sub { margin-top: 18px; font-size: 1rem; line-height: 1.55; }
-  .home-hero .cta { max-width: 420px; }
+  .home-hero .cta { max-width: 420px; flex-wrap: wrap; }
   .home-hero .cta .pill-dark,
   .home-hero .cta .pill-ghost,
   .home-hero .hero-link { flex: 1 1 calc(50% - 10px); padding: 0 10px; font-size: 13px; }
@@ -572,6 +574,7 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .home-hero .hero-copy { animation: none; }
 }
 
+/* ---------- Section reveal animations ---------- */
 #main .section-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -597,6 +600,8 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 /* ---------- Page sections ---------- */
 .sec { padding: clamp(36px, 6vw, 70px) clamp(18px, 4.5vw, 48px); border-radius: 24px; margin-bottom: var(--gutter); }
 .sec h2 { font-size: clamp(1.7rem, 4.6vw, 3.2rem); }
+
+/* ---------- Home course cards grid ---------- */
 .home-courses {
   margin: clamp(34px, 6vw, 76px) auto;
   padding: 0 clamp(12px, 3vw, 34px);
@@ -636,6 +641,8 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 .home-course-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--dgreen); font-size: 13px; font-weight: 800; }
 .home-course-link > span { transition: transform .2s ease; }
 .home-course-card:hover .home-course-link > span { transform: translateX(4px); }
+
+/* ---------- Home about-feature grid ---------- */
 .about-feature {
   display: grid;
   grid-template-columns: minmax(280px, .85fr) minmax(0, 1.25fr);
@@ -739,10 +746,18 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 }
 .about-feature-card h3 { margin: 0 0 7px; color: #215714; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.25; }
 .about-feature-card p { margin: 0; color: #52614e; font-size: clamp(13px, 1vw, 15px); line-height: 1.6; }
+
+/* Home courses & about-feature responsive */
+@media (max-width: 1100px) {
+  .home-course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
   .home-course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about-feature { grid-template-columns: 1fr; }
   .about-feature-intro { min-height: 0; }
+}
+@media (max-width: 640px) {
+  .home-course-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .home-courses { margin: 34px auto; padding: 0 4px; }
@@ -755,6 +770,8 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .about-feature-grid { grid-template-columns: 1fr; gap: 12px; }
   .about-feature-card { min-height: 0; padding: 22px; }
 }
+
+/* ---------- Courses intro / listing page ---------- */
 .courses-intro {
   position: relative;
   isolation: isolate;
@@ -854,6 +871,7 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 
 /* ---------- Course detail pages ---------- */
 .cd-page { width: 100%; overflow-x: clip; }
+.cd-page .course-hero-image { display: none; }
 .cd-page .hero-parallax { border-radius: 24px; min-height: min(100svh, 760px); padding: clamp(56px, 8vw, 90px) clamp(16px, 4vw, 40px); }
 .cd-page .hero-subtitle { font-size: clamp(1rem, 2.2vw, 1.4rem); font-weight: 600; color: #fff; margin: 6px 0 14px; }
 .cd-page .hero-parallax h1 { font-size: clamp(2rem, 7vw, 4rem); }
@@ -864,14 +882,60 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 .cd-page .hero-tools-label { display: block; width: 100%; }
 @media (max-width: 900px) {
   .cd-page .hero-parallax { background-attachment: scroll !important; }
+  .cd-page .hero-parallax {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 24px 16px 36px;
+    background: #FFFFFF !important;
+    text-align: left;
+  }
+  .cd-page .hero-parallax::before { display: none; }
+  .cd-page .course-hero-image {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .cd-page .hero-content {
+    align-items: flex-start;
+    max-width: 760px;
+    text-align: left;
+  }
+  .cd-page .hero-content h1 { color: #215714 !important; text-shadow: none; }
+  .cd-page .hero-content .hero-subtitle {
+    background: none;
+    color: #215714 !important;
+    -webkit-text-fill-color: currentColor;
+    filter: none;
+  }
+  .cd-page .hero-desc { color: #465344 !important; }
+  .cd-page .feature-bar {
+    border-color: rgba(33, 87, 20, .2);
+    background: #F6F8F4;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cd-page .feature { color: #215714; }
   .cd-crumb { flex-wrap: wrap; }
   .wd-device-controls { display: flex; flex-wrap: wrap; gap: 8px; }
   .wd-device-btn { flex: 1 1 140px; min-height: var(--tap); }
   .wd-viewport-frame { max-width: 100%; }
 }
 @media (max-width: 600px) {
+  .cd-page .hero-parallax { gap: 16px; padding: 20px 16px 30px; }
+  .cd-page .course-hero-image { max-height: 250px; border-radius: 16px; }
   .cd-page .hero-cta-group { flex-direction: column; align-items: stretch; width: 100%; }
   .cd-page .hero-cta-group a { width: 100%; }
+  .cd-page .feature-bar { padding: 16px; border-radius: 14px; }
 }
 
 /* ---------- Forms (Contact) ---------- */
@@ -885,6 +949,20 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .ct-grid { grid-template-columns: 1fr !important; }
   .ct-why-grid { grid-template-columns: 1fr !important; }
   .ct-map-card { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .ct-section { padding: 42px clamp(16px, 5vw, 40px); }
+}
+@media (max-width: 600px) {
+  .ct-hero { padding: 48px 20px; }
+  .ct-section { padding: 42px 20px; }
+  .ct-info-hub { gap: 24px; }
+  .ct-contact-cards { gap: 10px; }
+  .ct-contact-card { padding: 12px 14px; border-radius: 16px; }
+  .ct-contact-card__icon { width: 42px; height: 42px; border-radius: 12px; }
+  .ct-map-card { padding: 20px 16px; border-radius: 20px; }
+  .ct-feedback-box { padding: 28px 18px; border-radius: 22px; }
+  .ct-form-card { padding: 24px 18px; border-radius: 24px; }
+  .ct-why-block { padding: 22px 18px; }
+  .ct-map-card__btn { width: 100%; justify-content: center; }
 }
 .ct-contact-card__val { overflow-wrap: anywhere; }
 
@@ -895,11 +973,45 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 .tm-btn-primary, .tm-btn-secondary { min-height: var(--tap); }
 @media (max-width: 900px) {
   .tm-growth-grid, .tm-hero__features { grid-template-columns: 1fr !important; }
+  .tm-section { padding: clamp(40px, 5vw, 60px) clamp(16px, 4vw, 40px); }
+  .tm-trust-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+}
+@media (max-width: 600px) {
+  .tm-hero {
+    min-height: 68svh;
+    min-height: 68dvh;
+    padding: 40px 18px;
+  }
+  .tm-section { padding: 42px 18px; }
+  .tm-rating-card { padding: 24px 20px; border-radius: 24px; }
+  .tm-review-card { border-radius: 18px; }
+  .tm-cards-grid { grid-template-columns: 1fr !important; gap: 18px; }
+  .tm-stats-bar { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 18px 16px; }
+  .tm-trust-grid { grid-template-columns: 1fr; }
+  .tm-trust-card { padding: 24px 20px; }
+  .tm-cta-card { padding: 32px 20px; border-radius: 28px; }
+  .tm-cta-card__actions { flex-direction: column; align-items: stretch; }
+  .tm-btn-primary, .tm-btn-secondary { justify-content: center; text-align: center; }
+  .tm-maps-banner { padding: 24px 18px; border-radius: 22px; }
+  .tm-maps-banner__btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .tm-stats-bar { grid-template-columns: 1fr 1fr; }
+  .tm-filter-tabs { justify-content: flex-start; }
 }
 
 /* ---------- About ---------- */
 .ah { border-radius: 0; margin-bottom: var(--gutter); }
 .sec.ab h2 { font-size: clamp(1.7rem, 5vw, 3.4rem); letter-spacing: -.5px; }
+@media (max-width: 900px) {
+  .ab .at { grid-template-columns: 1fr; }
+  .ab .al { padding-left: 0; }
+}
+@media (max-width: 600px) {
+  .sec { padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 28px); }
+  .ph { padding: 48px clamp(18px, 4vw, 32px) 40px; }
+  .wc { padding: 56px clamp(18px, 4vw, 32px) 36px; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer { padding: clamp(40px, 6vw, 70px) clamp(20px, 4.5vw, 48px) 26px; border-radius: 24px; margin-top: var(--gutter); }
@@ -938,13 +1050,139 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .rv { opacity: 1; transform: none; }
 }
 
-/* Keep the site canvas white at responsive widths across every route. */
+/* ============================================================
+   Global white canvas at responsive widths across every route.
+   ============================================================ */
 @media (max-width: 900px) {
   :root { --bg: #FFFFFF; --card: #FFFFFF; }
-  body, #root, main { background-color: #FFFFFF; }
+  body, #root, main { background-color: #FFFFFF; color: #000000; }
   .hero.home-hero { height: auto; min-height: 0; }
-  body,
-  body :where(h1, h2, h3, h4, p, li, a, span, strong, b, small, label, button, input, textarea, select, legend, dt, dd, figcaption, blockquote) {
-    color: #000000 !important;
+  .site-footer,
+  .site-footer :where(*) { color: #FFFFFF !important; }
+  .ct-hero {
+    background: linear-gradient(110deg, #78946D 0%, #215714 100%);
+    color: #FFFFFF;
   }
+  .ct-hero__title { color: #FFFFFF; }
+  .ct-hero__lead { color: rgba(255, 255, 255, .92); }
+
+  /* Section + page level spacing */
+  .sec { padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 32px); }
+  .rs { padding-left: 22px; padding-right: 22px; }
+  footer { padding-left: 22px; padding-right: 22px; }
+
+  /* Courses grid on tablet */
+  .cg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* General stats / pts panels */
+  .pts { grid-template-columns: 1fr 1fr; }
+
+  /* Why section on Courses page */
+  .wg { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .ct-hero { padding: 48px 20px; }
+  .ct-section { padding: 42px 20px; }
+  .ct-info-hub { gap: 24px; }
+  .ct-contact-cards { gap: 10px; }
+  .ct-contact-card { padding: 12px 14px; border-radius: 16px; }
+  .ct-contact-card__icon { width: 42px; height: 42px; border-radius: 12px; }
+  .tm-hero {
+    min-height: 68svh;
+    min-height: 68dvh;
+    padding: 40px 18px;
+  }
+  .tm-section { padding: 42px 18px; }
+  .tm-rating-card { padding: 24px 20px; border-radius: 24px; }
+  .tm-review-card { border-radius: 18px; }
+
+  /* Courses grid on mobile */
+  .cg { grid-template-columns: 1fr; }
+  .pts { grid-template-columns: 1fr; }
+  .wg { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   About Growth Section – responsive fixes
+   ============================================================ */
+@media (max-width: 960px) {
+  .about-growth-grid { grid-template-columns: 1fr !important; }
+  .about-growth-media { order: -1; }
+}
+@media (max-width: 600px) {
+  .about-growth-intro { padding: 28px 22px; gap: 16px; border-radius: 18px; }
+  .about-growth-card { padding: 20px; gap: 14px; }
+}
+
+/* ============================================================
+   Reasons section – responsive
+   ============================================================ */
+@media (max-width: 960px) {
+  .reasons-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 600px) {
+  .reasons-grid { grid-template-columns: 1fr !important; gap: 14px; }
+  .reasons-card { padding: 20px; border-radius: 18px; }
+}
+
+/* ============================================================
+   CourseCreative section – responsive
+   ============================================================ */
+@media (max-width: 960px) {
+  .course-creative-grid { grid-template-columns: 1fr !important; }
+  .course-creative-media { order: -1; }
+}
+@media (max-width: 600px) {
+  .course-creative-card { padding: 20px; }
+  .course-creative-grid { gap: 14px; }
+}
+
+/* ============================================================
+   Marquee / ticker strip
+   ============================================================ */
+@media (max-width: 480px) {
+  .mq { font-size: 11px; padding: 12px 0; }
+  .mq-group { gap: clamp(12px, 4vw, 22px); padding-right: clamp(12px, 4vw, 22px); }
+}
+
+/* ============================================================
+   Contact "Why Choose" section extra breakpoints
+   ============================================================ */
+@media (max-width: 900px) {
+  .contact-why { grid-template-columns: 1fr; gap: 24px; }
+  .contact-why-intro { min-height: auto; }
+}
+@media (max-width: 600px) {
+  .contact-why { grid-template-columns: 1fr; gap: 20px; padding: 36px 18px; }
+  .contact-why-intro { min-height: auto; padding: 30px 26px; }
+  .contact-why-intro h2 { margin-top: 25px; }
+  .contact-why-intro p { margin-top: 12px; }
+  .contact-why-item { padding: 20px; grid-template-columns: 42px minmax(0, 1fr); }
+  .contact-why-number { font-size: 30px; }
+}
+
+/* ============================================================
+   Generic dialog / modal responsive
+   ============================================================ */
+dialog { max-width: min(540px, 92vw); }
+@media (max-width: 600px) {
+  dialog { border-radius: 18px; }
+  .dg { padding: 24px 18px; }
+  .dg h3 { font-size: 1.5rem; }
+  .dm-header, .dm-body { padding-left: 18px; padding-right: 18px; }
+  .dm-modules { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Body padding normalization across all screen sizes
+   ============================================================ */
+@media (min-width: 901px) {
+  body { padding: 18px; }
+}
+@media (max-width: 900px) {
+  body { padding: 10px; }
+}
+@media (max-width: 480px) {
+  body { padding: 8px; }
 }

@@ -47,6 +47,7 @@ export default function CourseDetail() {
       : 'cd-theme-dm'
 
   const otherCourses = courses.filter((c) => c.slug !== course.slug)
+  const heroImage = course.heroBg || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
 
   return (
     <div className={`cd-page ${themeClass}`}>
@@ -66,9 +67,14 @@ export default function CourseDetail() {
       <section
         className="hero-parallax"
         style={{
-          backgroundImage: `url('${course.heroBg || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'}')`,
+          backgroundImage: `url('${heroImage}')`,
         }}
       >
+        <img
+          className="course-hero-image"
+          src={heroImage}
+          alt={`${course.id} course`}
+        />
         <div className="hero-content">
           {/* <div className="hero-pill-badge">
             <span className="hero-badge-dot" />

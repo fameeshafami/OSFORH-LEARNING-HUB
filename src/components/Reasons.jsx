@@ -208,16 +208,16 @@ const BEE_STYLE = `
   letter-spacing: -0.035em;
   text-transform: none;
   margin: 0;
-  color: var(--bee-ink);
+  color: #000000;
 }
 
 .bee-text-blue {
-  color: var(--bee-green);
+  color: #000000;
   display: inline-block;
 }
 
 .bee-text-orange {
-  color: var(--bee-leaf);
+  color: #215714;
   display: inline-block;
   position: relative;
 }
