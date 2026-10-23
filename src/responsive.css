@@ -570,6 +570,9 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .home-hero .hero-link { flex: 1 1 calc(50% - 10px); padding: 0 10px; font-size: 13px; }
   .home-hero .note { max-width: 34ch; line-height: 1.6; }
 }
+@media (max-width: 900px) {
+  .home-hero .note::before { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .home-hero .hero-copy { animation: none; }
 }
