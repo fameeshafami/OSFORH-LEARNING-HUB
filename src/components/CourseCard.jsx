@@ -1,41 +1,43 @@
 import { Link } from 'react-router-dom'
 
-// One course card. `course.cardImage` is the extension-less base path of a
-// 480w/800w AVIF + WebP set (see public/img/cards).
-export default function CourseCard({ course, priority = false }) {
-  const base = course.cardImage
+const COURSE_ICONS = {
+  'digital-marketing': (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6M16 7h3v3" />
+    </svg>
+  ),
+  'graphic-designing': (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m4 16 9-9 4 4-9 9H4zM13 7l2-2a2.8 2.8 0 0 1 4 4l-2 2M4 20h16" />
+    </svg>
+  ),
+  'website-development': (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3.5 12h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" />
+    </svg>
+  ),
+  'office-administration': (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <path d="M8 8h8M8 12h8M8 16h5" />
+    </svg>
+  ),
+}
+
+export default function CourseCard({ course }) {
   const to = '/courses/' + course.slug
   return (
     <article className="course-card">
-      <Link to={to} className="course-card__media" tabIndex={-1} aria-hidden="true">
-        {base ? (
-          <picture>
-            <source type="image/avif" srcSet={`${base}-480.avif 480w, ${base}-800.avif 800w`} sizes="(min-width:1020px) 25vw, (min-width:600px) 45vw, 92vw" />
-            <source type="image/webp" srcSet={`${base}-480.webp 480w, ${base}-800.webp 800w`} sizes="(min-width:1020px) 25vw, (min-width:600px) 45vw, 92vw" />
-            <img
-              src={`${base}-800.webp`}
-              alt=""
-              width="800"
-              height="533"
-              loading={priority ? 'eager' : 'lazy'}
-              decoding="async"
-            />
-          </picture>
-        ) : (
-          <div className="course-card__fallback" dangerouslySetInnerHTML={{ __html: course.visual }} />
-        )}
-      </Link>
-
       <div className="course-card__body">
+        <span className="course-card__icon" aria-hidden="true">
+          {COURSE_ICONS[course.slug] || COURSE_ICONS['digital-marketing']}
+        </span>
         <h3>{course.id}</h3>
+        <p className="course-card__topics">{course.tags.slice(0, 3).join(' · ')}</p>
         <p>{course.desc}</p>
-        <ul className="course-card__tags" aria-label="Topics covered">
-          {course.tags.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
         <Link to={to} className="course-card__cta">
-          Explore {course.id}
+          Explore course
           <span aria-hidden="true"> →</span>
         </Link>
       </div>

@@ -1,23 +1,21 @@
 /* ==========================================================
-   CourseDetail — minimal · elegant · Elementor kit palette
-   Primary #6EC1E4 · Secondary #54595F · Text #7A7A7A · Accent #61CE70
-   Indigo #4054B2 · Green #23A455 · Deep green #116801
+   CourseDetail — minimal theme using the #215714 and #FFFFFF palette
    Only colours / type / borders / shadows are restyled — layout
    rules from your existing stylesheet are left alone.
    ========================================================== */
 
 .cd-page {
-  --k-sky: #A6D99A;
-  --k-slate: #4B6250;
-  --k-text: #496152;
-  --k-lime: #59B346;
-  --k-ind: #2B5D36;
-  --k-green: #2B5D36;
-  --k-deep: #1E4528;
-  --k-ink: #183222;
-  --k-line: #D6E6D3;
-  --k-tint: #F2F8F1;
-  --k-skytint: #DCEFD8;
+  --k-sky: #FFFFFF;
+  --k-slate: #215714;
+  --k-text: #215714;
+  --k-lime: #215714;
+  --k-ind: #215714;
+  --k-green: #215714;
+  --k-deep: #215714;
+  --k-ink: #215714;
+  --k-line: rgba(33, 87, 20, 0.18);
+  --k-tint: #FFFFFF;
+  --k-skytint: #FFFFFF;
   font-family: 'K2D', sans-serif;
   color: var(--k-text);
   background: #fff;
@@ -288,7 +286,7 @@
   border: 1.5px solid var(--k-line);
   border-radius: 30px;
   padding: 16px;
-  box-shadow: 0 24px 54px -12px rgba(43, 93, 54, .18);
+  box-shadow: 0 24px 54px -12px rgba(33, 87, 20, .18);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -306,8 +304,8 @@
 
 .cd-page.cd-page .bg-img-floating-tag {
   position: static;
-  background: var(--bg, #F2F8F1);
-  color: var(--k-ink, #183222);
+  background: var(--bg, #FFFFFF);
+  color: var(--k-ink, #215714);
   border: 1px solid var(--k-line);
   border-radius: 16px;
   padding: 12px 18px;
@@ -320,7 +318,7 @@
 }
 
 .cd-page.cd-page .bg-floating-num {
-  background: var(--k-green, #2B5D36);
+  background: var(--k-green, #215714);
   color: #fff;
   border-radius: 8px;
   padding: 3px 10px;
@@ -706,8 +704,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #1aa51f;
-  box-shadow: 0 0 10px #1aa51f;
+  background: #215714;
+  box-shadow: 0 0 10px #215714;
 }
 
 .cd-page .hero-content h1 {
@@ -721,17 +719,17 @@
 }
 
 .cd-page .hero-content .hero-subtitle {
-  color: #a6d99a !important;
-  background: linear-gradient(90deg, #d7f5cb 0%, #8bd17c 48%, #59b346 100%);
+  color: #FFFFFF !important;
+  background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 48%, #215714 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(89, 179, 70, .3));
+  filter: drop-shadow(0 2px 10px rgba(33, 87, 20, .3));
 }
 
 .cd-page .hero-content h2 {
   margin: 10px 0 16px;
-  color: #1aa51f !important;
+  color: #215714 !important;
   font-size: clamp(20px, 3vw, 34px);
   font-weight: 600;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -775,7 +773,7 @@
 }
 
 .cd-page .feature i {
-  color: #1aa51f;
+  color: #215714;
   font-size: 28px;
   filter: drop-shadow(0 2px 6px rgba(26, 165, 31, 0.4));
 }
@@ -795,7 +793,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #a6d99a;
+  color: #FFFFFF;
   margin-right: 4px;
 }
 
@@ -814,7 +812,7 @@
 
 .cd-page .hero-tool-badge:hover {
   transform: translateY(-2px);
-  border-color: #1aa51f;
+  border-color: #215714;
   background: rgba(26, 165, 31, 0.2);
 }
 
@@ -828,7 +826,7 @@
 }
 
 .cd-page .hero-btn-primary {
-  background: #1aa51f;
+  background: #215714;
   color: #ffffff !important;
   font-weight: 600;
   font-size: 16px;
@@ -903,7 +901,7 @@
 }
 
 .fab.whatsapp {
-  background: #25d366;
+  background: #215714;
 }
 
 .fab.call {

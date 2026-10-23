@@ -13,7 +13,7 @@ const PhoneIcon = () => (
 
 export default function FloatingActions() {
   return (
-    <div className="float-btns fa" role="group" aria-label="Quick contact">
+    <div className="float-btns fa" role="group" aria-label="Quick contact" style={{ paddingBottom: '90px' }}>
       <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="fab whatsapp" aria-label="Chat on WhatsApp (opens in a new tab)">
         <WaIcon />
       </a>

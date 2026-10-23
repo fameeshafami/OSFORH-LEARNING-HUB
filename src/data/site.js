@@ -40,5 +40,3 @@ export const COURSE_LINKS = [
   { label: 'Website Development', to: '/courses/website-development' },
   { label: 'Office Administration', to: '/courses/office-administration' },
 ]
-
-export const HERO_PORTRAIT = 'https://osforhlearninghub.in/wp-content/uploads/2025/10/mm-removebg-preview.webp'

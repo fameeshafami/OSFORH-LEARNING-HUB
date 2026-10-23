@@ -1,17 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import CourseCard from './CourseCard.jsx'
 
 /* Creative sections for CourseDetail, inspired by your 3 references:
-   1. CareerBoard   -> "Unlock endless career opportunities" blue grid + paper plane
+   1. CareerBoard   -> "Unlock endless career opportunities" green grid + paper plane
    2. OutcomesBoard -> "The course" stacked lettering + sticky notes on grid paper
    3. CorkBanner    -> cork board with pinned notes (JAM co. style)
    4. OtherTiles    -> pastel tile grid with "taped" label
-   Palette = your Elementor kit: #4054B2 #6EC1E4 #23A455 #61CE70 #116801 #54595F */
+   Brand palette: #215714 and #FFFFFF. */
 
 const CX_STYLE = `
 
 .cx{
-  --ink:#2B5D36; --sky:#A6D99A; --sky2:#DCEFD8; --g:#2B5D36; --gl:#59B346; --gd:#1E4528; --sl:#4B6250;
-  --paper:#F2F8F1;
+  --ink:#215714; --sky:#FFFFFF; --sky2:#FFFFFF; --g:#215714; --gl:#215714; --gd:#215714; --sl:#215714;
+  --paper:#FFFFFF;
   position:relative; overflow:hidden;
   padding:clamp(56px,8vw,110px) clamp(18px,6vw,100px);
   font-family:'K2D',sans-serif; color:var(--ink);
@@ -21,10 +22,10 @@ const CX_STYLE = `
 
 /* graph paper */
 .cx-paper{
-  background-color:#fff;
+  background-color:#FFFFFF;
   background-image:
-    linear-gradient(rgba(64,84,178,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(64,84,178,.08) 1px, transparent 1px);
+    linear-gradient(rgba(33,87,20,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33,87,20,.08) 1px, transparent 1px);
   background-size:34px 34px;
 }
 
@@ -38,7 +39,7 @@ const CX_STYLE = `
 .cx-career-l h2,.cx-board{ animation:cxRise .72s cubic-bezier(.2,.75,.25,1) both; }
 .cx-board{ animation-delay:.12s; }
 .cx-plane{ position:absolute; left:0; bottom:-30px; width:min(100%,360px); height:auto; overflow:visible; }
-.cx-plane .trail{ fill:none; stroke:#111; stroke-width:1.4; stroke-dasharray:6 5; animation:cxDash 18s linear infinite; }
+.cx-plane .trail{ fill:none; stroke:#215714; stroke-width:1.4; stroke-dasharray:6 5; animation:cxDash 18s linear infinite; }
 @keyframes cxDash{ to{ stroke-dashoffset:-400 } }
 .cx-plane .pl{ fill:var(--ink); transform-origin:center; animation:cxFly 3.4s ease-in-out infinite; }
 @keyframes cxFly{ 0%,100%{ transform:translate(0,0) rotate(0) } 50%{ transform:translate(6px,-8px) rotate(-4deg) } }
@@ -46,7 +47,7 @@ const CX_STYLE = `
 
 .cx-board{
   position:relative; background:var(--ink); border-radius:34px 40px 40px 34px;
-  padding:34px 8px 76px 8px; box-shadow:0 24px 50px rgba(64,84,178,.28);
+  padding:34px 8px 76px 8px; box-shadow:0 24px 50px rgba(33,87,20,.28);
   clip-path:polygon(0 0, 52% 4%, 100% 0, 100% 100%, 0 100%);
 }
 .cx-board-in{ background:#fff; border-radius:26px; padding:10px; position:relative; }
@@ -96,19 +97,19 @@ const CX_STYLE = `
 .cx-notes{ display:grid; gap:26px 22px; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); }
 .cx-note{
   position:relative; padding:34px 22px 22px; border-radius:6px 6px 22px 6px;
-  font-family:'Caveat',cursive; font-weight:700; font-size:clamp(20px,1.9vw,26px); line-height:1.15; color:#1c2a6b;
-  box-shadow:0 14px 26px rgba(64,84,178,.16); transition:transform .3s;
+  font-family:'Caveat',cursive; font-weight:700; font-size:clamp(20px,1.9vw,26px); line-height:1.15; color:#215714;
+  box-shadow:0 14px 26px rgba(33,87,20,.16); transition:transform .3s;
   animation:cxNoteDrop .58s cubic-bezier(.18,.9,.3,1) both; animation-delay:var(--cx-delay,0ms);
   background:var(--sky2);
 }
 .cx-note:nth-child(4n+1){ transform:rotate(-2deg); }
 .cx-note:nth-child(4n+2){ transform:rotate(1.6deg); background:#fff; border:2px dashed var(--ink); box-shadow:none; }
-.cx-note:nth-child(4n+3){ transform:rotate(-1deg); background:#DDF5E0; }
-.cx-note:nth-child(4n){ transform:rotate(2deg); background:#fff4b8; }
+.cx-note:nth-child(4n+3){ transform:rotate(-1deg); background:#FFFFFF; }
+.cx-note:nth-child(4n){ transform:rotate(2deg); background:#FFFFFF; }
 .cx-note:hover{ transform:rotate(0) translateY(-6px) scale(1.03); z-index:2; }
 .cx-note::before{ /* tape */
   content:''; position:absolute; top:-12px; left:50%; width:74px; height:24px; transform:translateX(-50%) rotate(-3deg);
-  background:rgba(255,255,255,.7); border:1px solid rgba(64,84,178,.15); box-shadow:0 2px 6px rgba(0,0,0,.08);
+  background:rgba(255,255,255,.7); border:1px solid rgba(33,87,20,.15); box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
 .cx-note i{
   position:absolute; right:12px; bottom:8px; font-style:normal; font-family:'Bricolage Grotesque'; font-weight:800;
@@ -118,46 +119,47 @@ const CX_STYLE = `
 
 /* ============ 3. CORK BANNER ============ */
 .cx-cork{ padding:0; background:var(--paper);
-  background-image:radial-gradient(rgba(120,90,40,.12) 1px, transparent 1.4px); background-size:7px 7px; }
+  background-image:radial-gradient(rgba(33,87,20,.12) 1px, transparent 1.4px); background-size:7px 7px; }
 .cx-torn{
   height:96px; background:var(--ink);
   clip-path:polygon(0 0,100% 0,100% 62%,97% 78%,94% 60%,91% 80%,88% 64%,84% 82%,80% 62%,77% 78%,73% 60%,69% 82%,65% 66%,61% 80%,57% 62%,53% 84%,49% 64%,45% 80%,41% 60%,37% 82%,33% 66%,29% 80%,25% 60%,21% 82%,17% 64%,13% 80%,9% 62%,5% 78%,2% 64%,0 74%);
 }
 .cx-cork-in{ padding:0 clamp(18px,6vw,100px) clamp(56px,8vw,100px); margin-top:-24px; }
 .cx-frame{
-  position:relative; max-width:1100px; margin:0 auto; border:14px solid #7a4a25; border-radius:6px;
-  box-shadow:0 0 0 3px #5a3418, 0 26px 50px rgba(0,0,0,.28), inset 0 0 40px rgba(0,0,0,.25);
-  background-color:#c98f55;
-  background-image:radial-gradient(rgba(90,50,20,.38) 1.2px, transparent 1.7px), radial-gradient(rgba(255,232,196,.3) 1px, transparent 1.5px);
+  position:relative; max-width:1100px; margin:0 auto; border:14px solid #215714; border-radius:6px;
+  box-shadow:0 0 0 3px rgba(33,87,20,.7), 0 26px 50px rgba(0,0,0,.28), inset 0 0 40px rgba(0,0,0,.25);
+  background-color:#215714;
+  background-image:radial-gradient(rgba(255,255,255,.16) 1.2px, transparent 1.7px), radial-gradient(rgba(255,255,255,.1) 1px, transparent 1.5px);
   background-size:14px 14px, 9px 9px; background-position:0 0, 5px 6px;
   padding:clamp(26px,4vw,56px); min-height:420px;
   display:grid; gap:24px; grid-template-columns:1fr; align-items:center; justify-items:center;
 }
 @media(min-width:860px){ .cx-frame{ grid-template-columns:1fr 1.25fr 1fr; } }
 .cx-pin{ position:absolute; top:-9px; left:50%; width:18px; height:18px; border-radius:50%; transform:translateX(-50%);
-  background:radial-gradient(circle at 35% 30%, #ff9b9b, #d62828 60%, #7a1010); box-shadow:2px 4px 6px rgba(0,0,0,.35); z-index:3; }
+  background:#FFFFFF; box-shadow:2px 4px 6px rgba(0,0,0,.35); z-index:3; }
 .cx-card{ position:relative; box-shadow:0 14px 26px rgba(0,0,0,.28); }
 .cx-side .cx-card{ animation:cxPinned .7s cubic-bezier(.2,.85,.25,1) both; }
 .cx-side .cx-card:nth-child(2){ animation-delay:.14s; }
 @keyframes cxPinned{ from{ opacity:0; transform:translateY(-24px) rotate(0) } to{ opacity:1 } }
 .cx-main{
-  background:#C9D6FF; padding:34px 26px 28px; text-align:center; transform:rotate(-1deg); max-width:340px; width:100%;
+  background:#FFFFFF; padding:34px 26px 28px; text-align:center; transform:rotate(-1deg); max-width:340px; width:100%;
   border-radius:4px;
 }
-.cx-main h3{ margin:0 0 12px; font-family:'Fraunces',serif; font-weight:500; color:#1b2a66; font-size:clamp(22px,2.6vw,34px); line-height:1.15; }
+.cx-main h3{ margin:0 0 12px; font-family:'Fraunces',serif; font-weight:500; color:#215714; font-size:clamp(22px,2.6vw,34px); line-height:1.15; }
 .cx-main h3 b{ display:block; font-size:1.5em; font-weight:700; }
-.cx-main p{ margin:0 0 16px; font-family:'Caveat',cursive; font-weight:700; font-size:22px; color:#1b2a66; line-height:1.1; }
+.cx-main p{ margin:0 0 16px; font-family:'Caveat',cursive; font-weight:700; font-size:22px; color:#215714; line-height:1.1; }
 .cx-main .btn{ display:inline-block; }
 .cx-side{ display:flex; flex-direction:column; gap:18px; align-items:center; }
 .cx-tag{
   padding:22px 20px 18px; max-width:210px; width:100%; text-align:center;
-  font-family:'Caveat',cursive; font-weight:700; font-size:24px; line-height:1.1; color:#2a2a2a; border-radius:3px;
+  font-family:'Caveat',cursive; font-weight:700; font-size:24px; line-height:1.1; color:#215714; border-radius:3px;
+  background:#FFFFFF; border:1px solid var(--ink);
 }
-.cx-tag:nth-child(1){ background:#ffe36e; transform:rotate(3deg); }
-.cx-tag:nth-child(2){ background:#ffb3c1; transform:rotate(-3deg); }
-.cx-tag:nth-child(3){ background:#bfe6ff; transform:rotate(2deg); }
-.cx-tag:nth-child(4){ background:#fff; transform:rotate(-2deg); }
-.cx-tag:nth-child(5){ background:#cdf3d2; transform:rotate(3deg); }
+.cx-tag:nth-child(1){ transform:rotate(3deg); }
+.cx-tag:nth-child(2){ transform:rotate(-3deg); }
+.cx-tag:nth-child(3){ transform:rotate(2deg); }
+.cx-tag:nth-child(4){ transform:rotate(-2deg); }
+.cx-tag:nth-child(5){ transform:rotate(3deg); }
 .cx-burst{
   width:92px; height:92px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
   font-family:'Caveat',cursive; font-weight:700; font-size:22px; line-height:1; background:var(--ink);
@@ -168,9 +170,7 @@ const CX_STYLE = `
 
 /* ============ 4. OTHER COURSES (SHOWCASE BENTO MODEL) ============ */
 .cx-tiles{
-  background:var(--paper);
-  background-image:radial-gradient(rgba(43,93,54,.08) 1.2px, transparent 1.6px);
-  background-size:14px 14px;
+  background:#FFFFFF;
   padding:clamp(64px,7vw,110px) clamp(20px,5vw,80px);
   position:relative;
   overflow:hidden;
@@ -180,208 +180,23 @@ const CX_STYLE = `
 .cx-tiles-kicker{
   display:inline-block;
   padding:6px 14px;
-  background:rgba(43,93,54,0.08);
+  background:rgba(33, 87, 20,0.08);
   border-radius:999px;
   font-size:11px;
   font-weight:800;
   letter-spacing:0.1em;
-  color:#2B5D36;
+  color:#215714;
   margin-bottom:12px;
 }
 .cx-tiles-head h2{ font-size:clamp(28px,4vw,48px); color:var(--ink) !important; margin:0; }
 .cx-tiles-head h2 em{ color:var(--gl) !important; }
 
-/* Subtle Background Flow Trail */
-.cx-flow-bg{
-  position:absolute;
-  top:180px;
-  left:0;
-  width:100%;
-  height:60%;
-  pointer-events:none;
-  z-index:1;
-  opacity:0.55;
-}
-
-/* Cards Grid */
 .cx-tile-grid{
   display:grid;
-  gap:clamp(26px,3.2vw,36px);
-  grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+  gap:clamp(14px,2vw,22px);
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
   position:relative;
   z-index:2;
-}
-
-/* Individual Showcase Card */
-.cx-show-card{
-  position:relative;
-  background:#FFFFFF;
-  border-radius:28px;
-  padding:16px 16px 22px;
-  border:1.5px solid rgba(43,93,54,0.14);
-  box-shadow:0 16px 36px -12px rgba(43,93,54,0.10);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, border-color 0.35s ease;
-  animation:cxTileIn .55s cubic-bezier(.2,.8,.25,1) both;
-  animation-delay:var(--cx-delay,0ms);
-}
-@keyframes cxTileIn{ from{ opacity:0; transform:translateY(28px) } to{ opacity:1; transform:translateY(0) } }
-
-.cx-show-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 24px 52px -12px rgba(43,93,54,0.22);
-  border-color:rgba(89,179,70,0.45);
-}
-
-/* Floating Number Pill (Top Right, matching 01, 02, 03 in reference) */
-.cx-show-pill{
-  position:absolute;
-  top:-16px;
-  right:24px;
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:#59B346;
-  color:#FFFFFF;
-  font-family:'K2D',sans-serif;
-  font-size:18px;
-  font-weight:900;
-  display:grid;
-  place-items:center;
-  box-shadow:0 10px 22px -4px rgba(89,179,70,0.45);
-  border:3px solid #FFFFFF;
-  z-index:10;
-  transition:transform 0.3s ease, background 0.3s ease;
-}
-.cx-show-card:hover .cx-show-pill{
-  transform:scale(1.1) rotate(6deg);
-  background:#2B5D36;
-}
-
-/* Visual Canvas Top */
-.cx-show-canvas{
-  height:190px;
-  width:100%;
-  border-radius:20px;
-  background:linear-gradient(145deg, #F2F8F1 0%, #E3F2E1 100%);
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.cx-show-canvas img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:12px;
-  display:block;
-  transition:transform 0.45s ease;
-}
-.cx-show-card:hover .cx-show-canvas img{
-  transform:scale(1.08);
-}
-.cx-show-canvas>div{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
-
-/* Tag Pill inside Canvas */
-.cx-show-tag{
-  position:absolute;
-  top:12px;
-  left:12px;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(8px);
-  padding:5px 12px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:800;
-  color:#2B5D36;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
-  z-index:3;
-}
-
-/* Card Body */
-.cx-show-body{
-  padding:18px 10px 0;
-}
-.cd-page.cd-page .cx-show-body h3,
-.cx-show-body h3{
-  margin:0 0 8px;
-  font-family:'K2D',sans-serif !important;
-  font-size:clamp(20px,1.8vw,24px) !important;
-  font-weight:800 !important;
-  line-height:1.2 !important;
-  color:#183222 !important;
-  letter-spacing:-0.025em;
-}
-.cd-page.cd-page .cx-show-body p,
-.cx-show-body p{
-  margin:0;
-  font-size:13.5px !important;
-  line-height:1.55 !important;
-  color:#496152 !important;
-  font-weight:500;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-
-/* Highlights List (Dotted line + Green Dots matching reference) */
-.cx-show-highlights{
-  list-style:none;
-  padding:14px 10px 0;
-  margin:16px 0 0;
-  border-top:1px dashed #D6E6D3;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-.cx-show-chip{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:12.5px;
-  font-weight:700;
-  color:#183222;
-}
-.cx-show-dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#59B346;
-  flex-shrink:0;
-}
-
-/* Explore Course Button */
-.cx-show-btn{
-  margin-top:18px;
-  width:100%;
-  padding:11px 18px;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg, #23A455, #61CE70);
-  color:#FFFFFF !important;
-  font-family:'K2D',sans-serif;
-  font-weight:700;
-  font-size:13.5px;
-  letter-spacing:0.02em;
-  cursor:pointer;
-  box-shadow:0 4px 14px rgba(35,164,85,0.3);
-  transition:transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-}
-.cx-show-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 22px rgba(35,164,85,0.45);
-  opacity:0.95;
 }
 .cx-tape{ display:none !important; }
 
@@ -506,24 +321,12 @@ export function CorkBanner({ course }) {
   )
 }
 
-/* 4 ───────── Other courses (Showcase Bento Hero Cards) ───────── */
+/* 4 ───────── Other courses ───────── */
 export function OtherTiles({ items = [] }) {
-  const navigate = useNavigate()
   if (!items.length) return null
 
   return (
     <section className="cx cx-tiles">
-      {/* Background connecting flow line */}
-      <svg className="cx-flow-bg" viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
-        <path
-          d="M 50 120 Q 350 30 650 140 T 1150 90"
-          fill="none"
-          stroke="#59B346"
-          strokeWidth="2.5"
-          strokeDasharray="10 8"
-        />
-      </svg>
-
       <div className="cx-tiles-in">
         <div className="cx-tiles-head">
           <span className="cx-tiles-kicker">EXPLORE MORE PATHWAYS</span>
@@ -533,67 +336,9 @@ export function OtherTiles({ items = [] }) {
         </div>
 
         <div className="cx-tile-grid">
-          {items.map((c, i) => {
-            const badgeNum = String(i + 1).padStart(2, '0')
-            const tagList = c.tags && c.tags.length ? c.tags.slice(0, 3) : ['Practical Projects', 'Certification', 'Placement Support']
-            return (
-              <div
-                key={c.slug}
-                className="cx-show-card"
-                style={{ '--cx-delay': `${i * 90}ms` }}
-                onClick={() => navigate('/courses/' + c.slug)}
-              >
-                {/* Floating Number Pill */}
-                <span className="cx-show-pill" aria-hidden="true">
-                  {badgeNum}
-                </span>
-
-                <div>
-                  {/* Visual Canvas with Artwork and Category Tag */}
-                  <div className="cx-show-canvas">
-                    <span className="cx-show-tag">
-                      {c.tags?.[0] || 'CAREER PROGRAM'}
-                    </span>
-                    {c.cardImage ? (
-                      <img src={c.cardImage} alt={c.id} />
-                    ) : (
-                      <div dangerouslySetInnerHTML={{ __html: c.visual }} />
-                    )}
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="cx-show-body">
-                    <h3>{c.id}</h3>
-                    <p>{c.desc}</p>
-                  </div>
-                </div>
-
-                {/* Highlights List with Green Dots matching reference */}
-                <div>
-                  <ul className="cx-show-highlights" aria-label={`Highlights of ${c.id}`}>
-                    {tagList.map((tag) => (
-                      <li key={tag} className="cx-show-chip">
-                        <span className="cx-show-dot" aria-hidden="true" />
-                        <span>{tag}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Action Button */}
-                  <button
-                    type="button"
-                    className="cx-show-btn"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      navigate('/courses/' + c.slug)
-                    }}
-                  >
-                    Explore Course →
-                  </button>
-                </div>
-              </div>
-            )
-          })}
+          {items.map((course) => (
+            <CourseCard key={course.slug} course={course} />
+          ))}
         </div>
       </div>
     </section>

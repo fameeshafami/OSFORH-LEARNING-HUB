@@ -152,8 +152,8 @@ export default function Testimonial() {
                 </div>
                 <div
                   style={{
-                    background: '#E8F5E5',
-                    color: '#2B5D36',
+                    background: '#FFFFFF',
+                    color: '#215714',
                     padding: '8px 16px',
                     borderRadius: '999px',
                     fontSize: '12px',
@@ -237,7 +237,7 @@ export default function Testimonial() {
             <h2 id="tm-trust-heading" className="tm-trust-heading">
               Why Students Trust Us
             </h2>
-            <p style={{ color: 'var(--soft, #496152)', fontSize: '16px', margin: 0 }}>
+            <p style={{ color: 'var(--soft, #215714)', fontSize: '16px', margin: 0 }}>
               Practical learning designed to bridge the gap between classroom theory and industry demands.
             </p>
           </div> */}
@@ -276,7 +276,7 @@ export default function Testimonial() {
             <h2 id="tm-reviews-heading" className="tm-reviews-heading">
               What Our <span>Students Say</span>
             </h2>
-            <p style={{ color: 'var(--soft, #496152)', fontSize: '16px', margin: 0 }}>
+            <p style={{ color: 'var(--soft, #215714)', fontSize: '16px', margin: 0 }}>
               Read direct testimonials from graduates who built practical skills and launched exciting careers.
             </p>
           </div>
@@ -312,7 +312,7 @@ export default function Testimonial() {
                   <div className="tm-review-card__author">
                     <div
                       className="tm-review-card__avatar"
-                      style={t.bg ? { background: t.bg } : { background: '#2B5D36' }}
+                      style={t.bg ? { background: t.bg } : { background: '#215714' }}
                     >
                       {t.initials}
                     </div>

@@ -17,8 +17,22 @@ export default function Layout() {
     }
 
     const els = document.querySelectorAll('.rv, .rmap')
-    if (!('IntersectionObserver' in window)) {
+    const sections = document.querySelectorAll('#main section')
+    sections.forEach((section) => {
+      const siblingSections = Array.from(section.parentElement.children).filter(
+        (sibling) => sibling.tagName === 'SECTION'
+      )
+      const stagger = Math.min(siblingSections.indexOf(section), 4) * 90
+      section.style.setProperty('--section-reveal-delay', `${stagger}ms`)
+      section.classList.add('section-reveal')
+    })
+
+    if (
+      !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       els.forEach((el) => el.classList.add('in'))
+      sections.forEach((section) => section.classList.add('section-reveal-visible'))
       return
     }
     const io = new IntersectionObserver(
@@ -26,6 +40,7 @@ export default function Layout() {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add('in')
+            e.target.classList.add('section-reveal-visible')
             io.unobserve(e.target)
           }
         })
@@ -33,6 +48,7 @@ export default function Layout() {
       { threshold: 0.12 }
     )
     els.forEach((el) => io.observe(el))
+    sections.forEach((section) => io.observe(section))
     return () => io.disconnect()
   }, [pathname, hash])
 

@@ -1,95 +1,46 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { REASONS } from '../data/site.js'
 
 const REASON_ITEMS = [
   {
-    title: REASONS[0] || 'Job-oriented training',
-    // tag: '100% Practical',
-    desc: 'Work on live commercial briefs and industry-standard tools from day one to build job-ready practical mastery.',
-    highlights: ['Live Client Projects', 'Real Workflow Simulations', 'Zero Theoretical Fluff'],
+    title: 'Structured Curriculum',
+    desc: 'Get skill training from basic to advanced with an industry-recognized, structured course curriculum.',
+    highlights: ['Beginner to Advanced', 'Industry-Recognized Curriculum'],
     tone: 'leaf',
     badgeNumber: '01',
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" className="bee-card-svg" aria-hidden="true">
-        <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="2.5" strokeDasharray="4 4" className="bee-spin-slow" />
-        <rect x="14" y="22" width="36" height="26" rx="6" stroke="currentColor" strokeWidth="2.5" fill="rgba(255,255,255,0.15)" />
-        <path d="M24 22V17C24 14.8 25.8 13 28 13H36C38.2 13 40 14.8 40 17V22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M14 31H50" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
-        <circle cx="32" cy="36" r="4.5" fill="currentColor" />
-        <path d="M32 40.5V44" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="48" cy="18" r="3" fill="#A6D99A" className="bee-pulse-glow" />
-      </svg>
-    ),
+    icon: '/img/benefits/curriculum.png',
   },
   {
-    title: REASONS[1] || 'Placement assistance',
-    // tag: 'Career Launch',
-    desc: 'Get dedicated 1-on-1 interview drill-downs, portfolio critiques, and direct interview pipelines with hiring partners.',
-    highlights: ['Mock Technical Interviews', 'Resume & LinkedIn Optimization', 'Direct Hiring Connects'],
+    title: 'Practical Approach',
+    desc: 'Acquire essential skills with a mentor-led, industry expert-guided, hands-on practical approach.',
+    highlights: ['Mentor-Led Training', 'Expert Guidance', 'Hands-On Projects'],
     tone: 'green',
     badgeNumber: '02',
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" className="bee-card-svg" aria-hidden="true">
-        <path d="M32 10L42 22C42 22 47 34 40 44L32 54L24 44C17 34 22 22 22 22L32 10Z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" fill="rgba(255,255,255,0.15)" />
-        <circle cx="32" cy="27" r="4.5" fill="currentColor" />
-        <path d="M22 36L14 42L18 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M42 36L50 42L46 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M28 50L32 58L36 50" stroke="#59B346" strokeWidth="3" strokeLinecap="round" className="bee-thruster" />
-        <circle cx="16" cy="18" r="2.5" fill="#A6D99A" className="bee-pulse-glow" />
-      </svg>
-    ),
+    icon: '/img/benefits/practical-approach.png',
   },
   {
-    title: REASONS[2] || 'Online and offline internship',
-    // tag: 'Hybrid Flexibility',
-    desc: 'Balance your schedule with immersive campus workshops or high-touch remote internships with real agency teams.',
-    highlights: ['Campus Labs & Tech Studio', 'Remote Agile Collaboration', 'Flexible Sprint Schedules'],
+    title: 'Unlimited Internship',
+    desc: 'Get internship opportunities through engaging capstone assignments and live projects at Osforh Learning Hub.',
+    highlights: ['Capstone Projects', 'Live Projects', 'Practical Experience'],
     tone: 'mint',
     badgeNumber: '03',
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" className="bee-card-svg" aria-hidden="true">
-        <rect x="12" y="16" width="40" height="26" rx="4" stroke="currentColor" strokeWidth="2.5" fill="rgba(255,255,255,0.15)" />
-        <path d="M8 46H56C57.1 46 58 45.1 58 44V42H6V44C6 45.1 6.9 46 8 46Z" fill="currentColor" />
-        <circle cx="32" cy="28" r="6" stroke="currentColor" strokeWidth="2" />
-        <path d="M22 28H42M32 18V38" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
-        <path d="M45 10C48 13 49 17 48 20" stroke="#59B346" strokeWidth="2.5" strokeLinecap="round" className="bee-wifi-wave" />
-        <path d="M51 6C56 11 57 18 55 24" stroke="#59B346" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 2" />
-      </svg>
-    ),
+    icon: '/img/benefits/internship.png',
   },
   {
-    title: REASONS[3] || 'Highly experienced faculties',
-    // tag: 'Industry Leads',
-    desc: 'Learn directly from seasoned practitioners and studio leads who bring frontline agency expertise to every class.',
-    highlights: ['Senior Creative Directors', 'Technical Strategists', 'Personalized Mentorship'],
+    title: 'Placement Assistance',
+    desc: 'Get certified and receive guidance for resume preparation and interview techniques.',
+    highlights: ['Resume Preparation', 'Interview Techniques', 'Career Guidance'],
     tone: 'deep',
     badgeNumber: '04',
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" className="bee-card-svg" aria-hidden="true">
-        <circle cx="32" cy="22" r="10" stroke="currentColor" strokeWidth="2.5" fill="rgba(255,255,255,0.15)" />
-        <path d="M14 50C14 41 22 37 32 37C42 37 50 41 50 50" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M32 10L34 16L40 16L35 20L37 26L32 22L27 26L29 20L24 16L30 16L32 10Z" fill="#A6D99A" />
-        <circle cx="50" cy="24" r="3" fill="#59B346" className="bee-pulse-glow" />
-      </svg>
-    ),
+    icon: '/img/benefits/placement-support.png',
   },
   {
-    title: REASONS[4] || 'Industry-recognized certificate',
-    // tag: 'Verified Credential',
-    desc: 'Graduate with an official, verifiable certificate that carries genuine credibility with recruiters and enterprises.',
-    highlights: ['QR-Verifiable Credentials', 'Employer Endorsements', 'LinkedIn Badge Integration'],
+    title: 'Career Opportunities',
+    desc: 'By enrolling in our courses, you can access placement opportunities through our hiring partners.',
+    highlights: ['Placement Opportunities', 'Industry Connections', 'Career Growth'],
     tone: 'leaf',
     badgeNumber: '05',
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" className="bee-card-svg" aria-hidden="true">
-        <rect x="14" y="12" width="36" height="42" rx="5" stroke="currentColor" strokeWidth="2.5" fill="rgba(255,255,255,0.15)" />
-        <path d="M22 22H42M22 28H36M22 34H30" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-        <circle cx="42" cy="40" r="9" fill="#2B5D36" stroke="#FFFFFF" strokeWidth="2" />
-        <path d="M39 40L41 42L45 38" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M39 48L37 54L42 51L47 54L45 48" fill="#59B346" />
-      </svg>
-    ),
+    icon: '/img/benefits/career-opportunities.png',
   },
 ]
 
@@ -104,16 +55,16 @@ const BEE_STYLE = `
 
 /* Osforh Green Palette + Beegains Animated Layout */
 #reasons.bee-reasons-root {
-  --bee-primary: #A6D99A;
-  --bee-green: #2B5D36;
-  --bee-deep: #1E4528;
-  --bee-leaf: #59B346;
-  --bee-mint: #DCEFD8;
-  --bee-cream: #F2F8F1;
-  --bee-ink: #183222;
-  --bee-soft: #496152;
-  --bee-line: #D6E6D3;
-  --bee-card-border: rgba(43, 93, 54, 0.14);
+  --bee-primary: #FFFFFF;
+  --bee-green: #215714;
+  --bee-deep: #215714;
+  --bee-leaf: #215714;
+  --bee-mint: #FFFFFF;
+  --bee-cream: #FFFFFF;
+  --bee-ink: #215714;
+  --bee-soft: #215714;
+  --bee-line: rgba(33, 87, 20, 0.18);
+  --bee-card-border: rgba(33, 87, 20, 0.14);
   --font-k2d: 'K2D', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   width: 100%;
@@ -139,9 +90,9 @@ const BEE_STYLE = `
   inset: 0;
   z-index: -2;
   background-image: 
-    radial-gradient(circle at 10% 15%, rgba(89, 179, 70, 0.12), transparent 35rem),
-    radial-gradient(circle at 90% 40%, rgba(43, 93, 54, 0.1), transparent 38rem),
-    radial-gradient(circle at 50% 90%, rgba(166, 217, 154, 0.25), transparent 32rem);
+    radial-gradient(circle at 10% 15%, rgba(33, 87, 20, 0.12), transparent 35rem),
+    radial-gradient(circle at 90% 40%, rgba(33, 87, 20, 0.1), transparent 38rem),
+    radial-gradient(circle at 50% 90%, rgba(33, 87, 20, 0.25), transparent 32rem);
   pointer-events: none;
 }
 
@@ -152,8 +103,8 @@ const BEE_STYLE = `
   z-index: -1;
   opacity: 0.45;
   background-image: 
-    linear-gradient(rgba(43, 93, 54, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(43, 93, 54, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(33, 87, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 87, 20, 0.05) 1px, transparent 1px);
   background-size: 38px 38px;
   pointer-events: none;
 }
@@ -167,10 +118,8 @@ const BEE_STYLE = `
 
 /* Header Section */
 .bee-header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: clamp(36px, 5vw, 64px);
+  min-width: 0;
+  margin: 0;
 }
 
 .bee-header-top {
@@ -186,15 +135,15 @@ const BEE_STYLE = `
   align-items: center;
   gap: 10px;
   padding: 8px 18px;
-  background: rgba(89, 179, 70, 0.12);
-  border: 1px solid rgba(43, 93, 54, 0.24);
+  background: rgba(33, 87, 20, 0.12);
+  border: 1px solid rgba(33, 87, 20, 0.24);
   border-radius: 999px;
   color: var(--bee-green);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  box-shadow: 0 4px 14px -4px rgba(43, 93, 54, 0.15);
+  box-shadow: 0 4px 14px -4px rgba(33, 87, 20, 0.15);
 }
 
 .bee-spark-dot {
@@ -241,23 +190,22 @@ const BEE_STYLE = `
   place-items: center;
   font-size: 17px;
   font-weight: 900;
-  box-shadow: 0 6px 16px rgba(89, 179, 70, 0.4);
+  box-shadow: 0 6px 16px rgba(33, 87, 20, 0.4);
 }
 
 .bee-title-row {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .bee-main-title {
-  font-size: clamp(34px, 5.2vw, 68px);
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-transform: none;
   margin: 0;
   color: var(--bee-ink);
 }
@@ -274,71 +222,167 @@ const BEE_STYLE = `
 }
 
 .bee-main-intro {
-  max-width: 480px;
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.55;
+  max-width: 44ch;
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.65;
   color: var(--bee-soft);
   font-weight: 500;
   margin: 0;
 }
 
-/* Interactive Metrics Ribbon */
+.bee-about-link {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  padding: 0 20px;
+  border: 1px solid var(--bee-green);
+  border-radius: 4px;
+  background: #FFFFFF;
+  color: var(--bee-green);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 5px 14px rgba(33, 87, 20, .08);
+  transition: color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.bee-about-link:hover {
+  transform: translateY(-2px);
+  background: var(--bee-green);
+  color: #FFFFFF;
+}
+
+/* Homepage benefits stats ribbon */
 .bee-metrics-ribbon {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: clamp(36px, 5vw, 60px);
-  padding: 18px 24px;
-  background: #FFFFFF;
-  border-radius: 20px;
-  border: 1px solid var(--bee-line);
-  box-shadow: 0 12px 28px -10px rgba(43, 93, 54, 0.08);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100vw;
+  max-width: none;
+  margin: 0 0 clamp(36px, 5vw, 60px) calc(50% - 50vw);
+  padding: clamp(24px, 3vw, 38px) clamp(16px, 3vw, 36px);
+  border-radius: 0;
+  background: linear-gradient(110deg, #215714 0%, #2f761d 52%, #4b9228 100%);
+  box-shadow: 0 16px 34px -14px rgba(33, 87, 20, .42);
 }
 
 .bee-metric-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 8px 12px;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 4px 10px;
+  text-align: center;
 }
 
 .bee-metric-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(43, 93, 54, 0.08);
-  color: var(--bee-green);
   display: grid;
+  width: 34px;
+  height: 34px;
   place-items: center;
-  font-size: 18px;
-  flex-shrink: 0;
+  color: #fff;
 }
 
-.bee-metric-item:nth-child(even) .bee-metric-icon {
-  background: rgba(89, 179, 70, 0.12);
-  color: var(--bee-leaf);
+.bee-metric-icon svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .bee-metric-val {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--bee-ink);
-  line-height: 1.1;
+  color: #fff;
+  font-size: clamp(20px, 2.3vw, 32px);
+  font-weight: 900;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 .bee-metric-lbl {
-  font-size: 12px;
-  color: var(--bee-soft);
+  color: rgba(255, 255, 255, .9);
+  font-size: clamp(11px, 1vw, 14px);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: .01em;
+}
+
+@media (max-width: 700px) {
+  .bee-metrics-ribbon {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 10px;
+    padding: 26px 16px;
+  }
+  .bee-metric-item { padding: 4px 8px; }
+  .bee-metric-val { font-size: clamp(18px, 4vw, 24px); }
+  .bee-metric-lbl { font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .bee-metrics-ribbon { gap: 18px 6px; padding-inline: 10px; }
+  .bee-metric-val { font-size: 17px; }
+  .bee-metric-lbl { font-size: 11px; }
 }
 
 /* Wavy Flow Line Container */
 .bee-flow-wrap {
   position: relative;
-  margin-bottom: clamp(48px, 6vw, 76px);
+  min-width: 0;
 }
+
+.bee-feature-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.bee-feature-layout .bee-flow-wrap,
+.bee-feature-layout .bee-cards-grid {
+  display: contents;
+}
+
+.bee-feature-layout > .bee-header {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  padding: 8px 12px 8px 0;
+}
+
+.bee-feature-layout .bee-cards-grid > :nth-child(1) { grid-column: 2; grid-row: 1; }
+.bee-feature-layout .bee-cards-grid > :nth-child(2) { grid-column: 3; grid-row: 1; }
+.bee-feature-layout .bee-cards-grid > :nth-child(3) { grid-column: 1; grid-row: 2; }
+.bee-feature-layout .bee-cards-grid > :nth-child(4) { grid-column: 2; grid-row: 2; }
+.bee-feature-layout .bee-cards-grid > :nth-child(5) { grid-column: 3; grid-row: 2; }
+
+.bee-feature-layout .bee-cards-grid > :nth-child(1) { background: #f2f7ef; }
+.bee-feature-layout .bee-cards-grid > :nth-child(2) { background: #eaf3e7; }
+.bee-feature-layout .bee-cards-grid > :nth-child(3) { background: #f6f8f4; }
+.bee-feature-layout .bee-cards-grid > :nth-child(4) { background: #edf5eb; }
+.bee-feature-layout .bee-cards-grid > :nth-child(5) { background: #f1f6ee; }
+
+@media (max-width: 1000px) {
+  .bee-feature-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bee-feature-layout > .bee-header { grid-column: 1 / -1; grid-row: auto; }
+  .bee-feature-layout .bee-cards-grid > :nth-child(n) { grid-column: auto; grid-row: auto; }
+}
+
+@media (max-width: 640px) {
+  .bee-feature-layout { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .bee-feature-layout > .bee-header { grid-column: 1; padding: 0 0 8px; }
+  .bee-feature-layout .bee-cards-grid > :nth-child(n) { grid-column: auto; grid-row: auto; }
+  .bee-card { min-height: 0; padding: 18px; }
+}
+
+.bee-card-top { justify-content: flex-start; }
+.bee-tag { display: none; }
 
 .bee-flow-svg-bg {
   position: absolute;
@@ -360,7 +404,7 @@ const BEE_STYLE = `
 .bee-cards-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: clamp(28px, 3.5vw, 36px);
+  gap: 18px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -374,36 +418,20 @@ const BEE_STYLE = `
   }
 }
 
-@media (min-width: 1080px) {
-  .bee-cards-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .bee-card-featured {
-    grid-column: span 1;
-  }
-  .bee-cards-grid > :nth-child(4) {
-    grid-column: 1 / span 1;
-    margin-left: auto;
-    width: 100%;
-  }
-  .bee-cards-grid > :nth-child(5) {
-    grid-column: 2 / span 2;
-    max-width: 100%;
-  }
-}
-
 /* Individual Card */
 .bee-card {
   position: relative;
   background: #FFFFFF;
-  border-radius: 32px;
-  padding: 38px 28px 28px;
+  border-radius: 14px;
+  padding: 20px;
   border: 1.5px solid var(--bee-card-border);
-  box-shadow: 0 18px 40px -15px rgba(43, 93, 54, 0.1);
+  box-shadow: 0 8px 24px -12px rgba(33, 87, 20, 0.16);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: flex-start;
+  gap: 12px;
+  min-height: 0;
+  align-self: start;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
   transform: translateY(28px);
@@ -415,52 +443,21 @@ const BEE_STYLE = `
 }
 
 .bee-card:hover {
-  transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 28px 56px -16px rgba(43, 93, 54, 0.22);
-  border-color: rgba(43, 93, 54, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -12px rgba(33, 87, 20, 0.2);
+  border-color: rgba(33, 87, 20, 0.35);
 }
 
 /* Top Floating Number Badge */
 .bee-number-pill {
   position: absolute;
-  top: -20px;
-  right: 28px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  color: var(--bee-green);
-  font-size: 19px;
-  font-weight: 900;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 10px 24px -4px rgba(43, 93, 54, 0.3);
-  border: 3px solid #FFFDF9;
+  top: 16px;
+  right: 16px;
+  width: 17px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(33, 87, 20, .08);
   z-index: 10;
-  transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
-}
-
-.bee-card:hover .bee-number-pill {
-  transform: scale(1.12) rotate(8deg);
-  background: var(--bee-leaf);
-  color: #FFFFFF;
-  box-shadow: 0 12px 28px -4px rgba(89, 179, 70, 0.5);
-}
-
-/* Card Themes */
-.bee-card[data-tone="leaf"]:hover {
-  border-color: rgba(89, 179, 70, 0.45);
-  box-shadow: 0 28px 56px -16px rgba(89, 179, 70, 0.26);
-}
-
-.bee-card[data-tone="green"] .bee-number-pill {
-  color: var(--bee-green);
-  box-shadow: 0 10px 24px -4px rgba(43, 93, 54, 0.3);
-}
-
-.bee-card[data-tone="green"]:hover .bee-number-pill {
-  background: var(--bee-green);
-  color: #FFFFFF;
 }
 
 /* Card Content */
@@ -472,24 +469,24 @@ const BEE_STYLE = `
 }
 
 .bee-icon-box {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: rgba(43, 93, 54, 0.08);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(33, 87, 20, 0.1);
   color: var(--bee-green);
   display: grid;
   place-items: center;
-  padding: 10px;
+  padding: 7px;
   box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6);
   transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease;
 }
 
 .bee-card[data-tone="leaf"] .bee-icon-box {
-  background: rgba(89, 179, 70, 0.12);
+  background: rgba(33, 87, 20, 0.12);
   color: var(--bee-leaf);
 }
 .bee-card[data-tone="mint"] .bee-icon-box {
-  background: rgba(166, 217, 154, 0.25);
+  background: rgba(33, 87, 20, 0.25);
   color: var(--bee-green);
 }
 
@@ -502,10 +499,17 @@ const BEE_STYLE = `
   height: 100%;
 }
 
+.bee-card-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .bee-tag {
   display: inline-block;
   padding: 5px 12px;
-  background: rgba(43, 93, 54, 0.06);
+  background: rgba(33, 87, 20, 0.06);
   border-radius: 999px;
   font-size: 11px;
   font-weight: 800;
@@ -515,8 +519,8 @@ const BEE_STYLE = `
 }
 
 .bee-card-body h3 {
-  margin: 14px 0 10px;
-  font-size: clamp(20px, 1.8vw, 25px);
+  margin: 10px 0 6px;
+  font-size: clamp(17px, 1.35vw, 20px);
   font-weight: 800;
   line-height: 1.15;
   color: var(--bee-ink);
@@ -525,27 +529,28 @@ const BEE_STYLE = `
 
 .bee-card-body p {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--bee-soft);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #52614e;
   font-weight: 500;
 }
 
 .bee-card-highlights {
   list-style: none;
-  padding: 16px 0 0;
-  margin: 16px 0 0;
+  padding: 9px 0 0;
+  margin: auto 0 0;
   border-top: 1px dashed var(--bee-line);
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 7px 12px;
 }
 
 .bee-highlight-chip {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12.5px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--bee-ink);
 }
@@ -561,35 +566,17 @@ const BEE_STYLE = `
   background: var(--bee-green);
 }
 
-/* Card 5 horizontal expansion on large screens */
-@media (min-width: 1080px) {
-  .bee-cards-grid > :nth-child(5) {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 32px;
-    padding: 32px 36px;
-  }
-  .bee-cards-grid > :nth-child(5) .bee-card-top {
-    flex-direction: column;
-  }
-  .bee-cards-grid > :nth-child(5) .bee-card-highlights {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-}
 
 /* Beegains Signature "The Result:" Showcase Section in Forest Palette */
 .bee-results-banner {
   margin-top: clamp(48px, 6vw, 80px);
-  background: linear-gradient(145deg, #1E4528 0%, #102C1A 100%);
+  background: linear-gradient(145deg, #215714 0%, #215714 100%);
   border-radius: 36px;
   padding: clamp(32px, 5vw, 64px) clamp(24px, 4.5vw, 60px);
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 50px -15px rgba(30, 69, 40, 0.45);
+  box-shadow: 0 24px 50px -15px rgba(33, 87, 20, 0.45);
 }
 
 .bee-results-banner::before {
@@ -600,7 +587,7 @@ const BEE_STYLE = `
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(89, 179, 70, 0.32), transparent 70%);
+  background: radial-gradient(circle, rgba(33, 87, 20, 0.32), transparent 70%);
   pointer-events: none;
 }
 
@@ -636,7 +623,7 @@ const BEE_STYLE = `
 .bee-results-intro p {
   font-size: 16px;
   line-height: 1.6;
-  color: #DCEFD8;
+  color: #FFFFFF;
   max-width: 420px;
   margin: 0 0 28px;
 }
@@ -661,14 +648,14 @@ const BEE_STYLE = `
   padding: 14px 28px;
   border-radius: 999px;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(89, 179, 70, 0.45);
+  box-shadow: 0 10px 24px rgba(33, 87, 20, 0.45);
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .bee-btn-orange:hover {
   transform: translateY(-3px) scale(1.03);
   background: #6cd057;
-  box-shadow: 0 14px 30px rgba(89, 179, 70, 0.6);
+  box-shadow: 0 14px 30px rgba(33, 87, 20, 0.6);
 }
 
 .bee-btn-ghost {
@@ -715,7 +702,7 @@ const BEE_STYLE = `
 }
 
 .bee-result-row:hover {
-  background: rgba(89, 179, 70, 0.28);
+  background: rgba(33, 87, 20, 0.28);
   border-color: var(--bee-leaf);
   transform: translateX(8px);
 }
@@ -725,7 +712,7 @@ const BEE_STYLE = `
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-left: 11px solid #A6D99A;
+  border-left: 11px solid #FFFFFF;
   flex-shrink: 0;
   animation: beeSlightMove 1.8s ease-in-out infinite;
 }
@@ -805,7 +792,6 @@ const BEE_STYLE = `
 
 export default function Reasons() {
   const containerRef = useRef(null)
-  const [, setActiveCard] = useState(null)
 
   useEffect(() => {
     const cards = containerRef.current?.querySelectorAll('.bee-card') ?? []
@@ -835,36 +821,53 @@ export default function Reasons() {
       <style>{BEE_STYLE}</style>
 
       <div className="bee-shell">
-        {/* Header Section */}
-        <header className="bee-header">
-          <div className="bee-header-top">
-            <div className="bee-pill-badge">
-              <span className="bee-spark-dot" aria-hidden="true" />
-              <span>The Osforh Advantage</span>
-            </div>
-
-            {/* Rotating Seal Stamp (Beegains signature branding in green palette) */}
-            <div className="bee-rotating-seal" aria-hidden="true">
-              {/* <svg viewBox="0 0 100 100" className="bee-seal-text">
-                <path
-                  id="beeSealCircle"
-                  d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                  fill="none"
-                />
-                <text>
-                  <textPath href="#beeSealCircle" startOffset="0%">
-                    ★ OSFORH  ★ LEARNING HUB ★ 100% PRACTICAL
-                  </textPath>
-                </text>
-              </svg> */}
-              {/* <div className="bee-seal-center">✦</div> */}
+  {/* Live Metrics Ribbon */}
+        <div className="bee-metrics-ribbon">
+          <div className="bee-metric-item">
+            <span className="bee-metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16v11H4zM2 19h20M9 16l-1 3m7-3 1 3M8 9l2 2-2 2m4 0h3" /></svg>
+            </span>
+            <div>
+              <div className="bee-metric-val">100% Practical</div>
+              <div className="bee-metric-lbl">Project-Driven Labs</div>
             </div>
           </div>
+          <div className="bee-metric-item">
+            <span className="bee-metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5h8v2m-13 5h18m-11 0v2h4v-2" /></svg>
+            </span>
+            <div>
+              <div className="bee-metric-val">Placement Support</div>
+              <div className="bee-metric-lbl">Dedicated HR Mock Calls</div>
+            </div>
+          </div>
+          <div className="bee-metric-item">
+            <span className="bee-metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 11a3 3 0 1 0-1-5.8M17 14a5 5 0 0 1 3.5 4.8V20H17" /></svg>
+            </span>
+            <div>
+              <div className="bee-metric-val">Expert Mentors</div>
+              <div className="bee-metric-lbl">Active Agency Leads</div>
+            </div>
+          </div>
+          <div className="bee-metric-item">
+            <span className="bee-metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7z" /></svg>
+            </span>
+            <div>
+              <div className="bee-metric-val">Hybrid Flexibility</div>
+              <div className="bee-metric-lbl">Online &amp; Campus Mode</div>
+            </div>
+          </div>
+        </div>
 
+
+        <div className="bee-feature-layout">
+          <header className="bee-header">
           <div className="bee-title-row">
             <div>
               <h2 className="bee-main-title">
-                Here are a few reasons why <br />
+                Here are a few reasons why{' '}
                 <span className="bee-text-blue">You Should Choose</span>{' '}
                 <span className="bee-text-orange">Osforh.</span>
               </h2>
@@ -873,92 +876,23 @@ export default function Reasons() {
               Learning here is engineered to propel your career—with live commercial projects, direct mentor
               guidance, and placement assistance designed to give you an unfair advantage.
             </p>
+            {/* <Link className="bee-about-link" to="/about">About Us</Link> */}
           </div>
-        </header>
-
-        {/* Live Metrics Ribbon */}
-        <div className="bee-metrics-ribbon">
-          <div className="bee-metric-item">
-            <span className="bee-metric-icon" aria-hidden="true">💻</span>
-            <div>
-              <div className="bee-metric-val">100% Practical</div>
-              <div className="bee-metric-lbl">Project-Driven Labs</div>
-            </div>
-          </div>
-          <div className="bee-metric-item">
-            <span className="bee-metric-icon" aria-hidden="true">💼</span>
-            <div>
-              <div className="bee-metric-val">Placement Support</div>
-              <div className="bee-metric-lbl">Dedicated HR Mock Calls</div>
-            </div>
-          </div>
-          <div className="bee-metric-item">
-            <span className="bee-metric-icon" aria-hidden="true">🧑‍💻</span>
-            <div>
-              <div className="bee-metric-val">Expert Mentors</div>
-              <div className="bee-metric-lbl">Active Agency Leads</div>
-            </div>
-          </div>
-          <div className="bee-metric-item">
-            <span className="bee-metric-icon" aria-hidden="true">⚡</span>
-            <div>
-              <div className="bee-metric-val">Hybrid Flexibility</div>
-              <div className="bee-metric-lbl">Online &amp; Campus Mode</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Cards Grid with Beegains Floating Badges & Wavy Connection */}
-        <div className="bee-flow-wrap">
-          {/* Beegains Inspired Curved Wave Background Line in Green Palette */}
-          <svg
-            className="bee-flow-svg-bg"
-            viewBox="0 0 1200 600"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M 50 120 C 350 40, 450 320, 750 180 C 1000 80, 1050 450, 1150 400"
-              stroke="#59B346"
-              strokeWidth="4"
-              strokeOpacity="0.35"
-              className="bee-wavy-path"
-            />
-            <path
-              d="M 100 240 C 380 340, 500 120, 850 380 C 1050 500, 1100 220, 1180 320"
-              stroke="#A6D99A"
-              strokeWidth="3"
-              strokeOpacity="0.3"
-              className="bee-wavy-path"
-              style={{ animationDirection: 'reverse', animationDuration: '30s' }}
-            />
-          </svg>
+          </header>
 
           <ol className="bee-cards-grid">
-            {REASON_ITEMS.map((item, index) => (
+            {REASON_ITEMS.map((item) => (
               <li
                 key={item.badgeNumber}
-                className={`bee-card ${index === 4 ? 'bee-card-featured' : ''}`}
+                className="bee-card"
                 data-tone={item.tone}
-                style={{ transitionDelay: `${index * 80}ms` }}
-                onMouseEnter={() => setActiveCard(index)}
-                onMouseLeave={() => setActiveCard(null)}
               >
-                {/* Floating Beegains Style Number Badge */}
-                <span className="bee-number-pill" aria-hidden="true">
-                  {item.badgeNumber}
-                </span>
+                <span className="bee-number-pill" aria-hidden="true" />
 
-                <div>
-                  <div className="bee-card-top">
-                    <span className="bee-icon-box" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <span className="bee-tag">{item.tag}</span>
-                  </div>
-
+                <div className="bee-card-content">
+                  <span className="bee-icon-box" aria-hidden="true">
+                    <img className="bee-card-icon" src={item.icon} alt="" />
+                  </span>
                   <div className="bee-card-body">
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>

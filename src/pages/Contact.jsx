@@ -162,8 +162,8 @@ export default function Contact() {
                     fontWeight: 800,
                     textTransform: 'uppercase',
                     letterSpacing: '2px',
-                    color: 'var(--accent, #2B5D36)',
-                    background: '#E2F2DF',
+                    color: 'var(--accent, #215714)',
+                    background: '#FFFFFF',
                     padding: '6px 14px',
                     borderRadius: '999px',
                     marginBottom: '12px',
@@ -201,7 +201,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="ct-contact-card"
                 >
-                  <div className="ct-contact-card__icon" style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }} aria-hidden="true">
+                  <div className="ct-contact-card__icon" style={{ background: 'linear-gradient(135deg, #215714, #215714)' }} aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.39-1.74-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.89.87-.89 2.12s.91 2.46 1.04 2.63c.13.17 1.79 2.73 4.33 3.83.6.26 1.08.42 1.45.54.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.3" />
                     </svg>
@@ -242,7 +242,7 @@ export default function Contact() {
                   <div className="ct-contact-card__content">
                     <div className="ct-contact-card__label">Campus Location</div>
                     <div className="ct-contact-card__val">
-                      Forza 2, near bus stand, Tirur, Malappuram
+                      Near bus stand, Tirur, Malappuram
                     </div>
                   </div>
                   <span className="ct-contact-card__arrow" aria-hidden="true">↗</span>
@@ -260,7 +260,7 @@ export default function Contact() {
                 <div className="ct-why-grid">
                   {WHY_CHOOSE.map((item) => (
                     <div key={item.title} className="ct-why-item">
-                      <div style={{ color: 'var(--accent, #2B5D36)', marginBottom: '8px' }}>
+                      <div style={{ color: 'var(--accent, #215714)', marginBottom: '8px' }}>
                         {item.icon}
                       </div>
                       <h4>{item.title}</h4>
