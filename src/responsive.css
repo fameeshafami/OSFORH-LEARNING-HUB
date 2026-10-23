@@ -99,6 +99,10 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 /* tablet & mobile navigation */
 @media (max-width: 900px) {
   .nav { border-radius: 28px; padding: 8px 10px 8px 16px; }
+  .nav .logo { flex: 0 0 auto; }
+  .nav .logo picture { display: block; width: clamp(112px, 36vw, 150px); }
+  .nav .logo img { display: block; width: 100%; height: auto; max-width: none; }
+  .nav .nr { flex: 0 0 auto; margin-left: auto; }
   .links {
     display: none; position: absolute; left: 0; right: 0; top: calc(100% + 8px);
     flex-direction: column; align-items: stretch; gap: 2px; margin: 0;
@@ -938,4 +942,9 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 @media (max-width: 900px) {
   :root { --bg: #FFFFFF; --card: #FFFFFF; }
   body, #root, main { background-color: #FFFFFF; }
+  .hero.home-hero { height: auto; min-height: 0; }
+  body,
+  body :where(h1, h2, h3, h4, p, li, a, span, strong, b, small, label, button, input, textarea, select, legend, dt, dd, figcaption, blockquote) {
+    color: #000000 !important;
+  }
 }
