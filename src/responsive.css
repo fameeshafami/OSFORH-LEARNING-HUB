@@ -1008,6 +1008,32 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .tm-growth-grid, .tm-hero__features { grid-template-columns: 1fr !important; }
   .tm-section { padding: clamp(40px, 5vw, 60px) clamp(16px, 4vw, 40px); }
   .tm-trust-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .tm-page :is(h1, h2, h3, h4, p, span, b, strong) {
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+  .tm-page .tm-hero__title,
+  .tm-page .tm-hero__lead,
+  .tm-page .tm-feature-badge__title,
+  .tm-page .tm-feature-badge__sub { color: #FFFFFF !important; }
+  .tm-page .tm-rating-count,
+  .tm-page .tm-bar-row,
+  .tm-page .tm-chip-text,
+  .tm-page .tm-chip-text span,
+  .tm-page .tm-growth-desc,
+  .tm-page .tm-growth-desc strong,
+  .tm-page .tm-trust-card__desc,
+  .tm-page .tm-review-card__quote { color: #52614e !important; }
+  .tm-page .tm-rating-card,
+  .tm-page .tm-trust-card,
+  .tm-page .tm-review-card { color: #215714 !important; }
+  .tm-page .tm-rating-score,
+  .tm-page .tm-rating-stars,
+  .tm-page .tm-chip-text b,
+  .tm-page .tm-growth-heading,
+  .tm-page .tm-trust-card__title,
+  .tm-page .tm-review-card__title { color: #215714 !important; }
   /* Ensure all testimonial card text stays visible on mobile canvas */
   .tm-review-card__quote { color: #52614e !important; }
   .tm-review-card__title { color: #215714 !important; }
