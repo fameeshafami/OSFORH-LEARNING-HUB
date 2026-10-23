@@ -970,7 +970,6 @@ h3 {
   padding: 90px 48px;
   overflow: hidden;
   background-color: var(--white);
-  background-image: var(--reasons-bg);
   background-repeat: repeat;
   background-position: center;
   background-size: 265px auto;

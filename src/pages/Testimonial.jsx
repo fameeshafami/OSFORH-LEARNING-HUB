@@ -92,11 +92,15 @@ export default function Testimonial() {
   }
 
   return (
-    <div className="tm-page" style={{ '--tm-hero-bg': `url("${asset('img/testimonial-bg.webp')}")` }}>
+    <div className="tm-page">
       {/* ================================================================
           1. Hero Section: "Testimonial | Digital Marketing Institute"
           ================================================================ */}
-      <section className="tm-hero" aria-labelledby="tm-hero-title">
+      <section
+        className="tm-hero"
+        aria-labelledby="tm-hero-title"
+        style={{ backgroundImage: `url("${asset('img/testimonial-bg.webp')}")` }}
+      >
         <div className="tm-hero__blob tm-hero__blob--1" aria-hidden="true" />
         <div className="tm-hero__blob tm-hero__blob--2" aria-hidden="true" />
 

@@ -822,7 +822,7 @@ export default function Reasons() {
       className="rs bee-reasons-root"
       id="reasons"
       ref={containerRef}
-      style={{ '--reasons-bg': `url("${asset('img/reasons-bg.png')}")` }}
+      style={{ backgroundImage: `url("${asset('img/reasons-bg.png')}")` }}
     >
       <style>{BEE_STYLE}</style>
 
