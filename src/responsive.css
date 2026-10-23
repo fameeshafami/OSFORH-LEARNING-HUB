@@ -933,3 +933,9 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .rv { opacity: 1; transform: none; }
 }
+
+/* Keep the site canvas white at responsive widths across every route. */
+@media (max-width: 900px) {
+  :root { --bg: #FFFFFF; --card: #FFFFFF; }
+  body, #root, main { background-color: #FFFFFF; }
+}
