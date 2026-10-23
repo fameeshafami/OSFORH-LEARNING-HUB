@@ -948,6 +948,19 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 @media (max-width: 900px) {
   .ct-grid { grid-template-columns: 1fr !important; }
   .ct-why-grid { grid-template-columns: 1fr !important; }
+  .ct-page .ct-why-item {
+    min-width: 0;
+    background: #FFFFFF;
+    color: #215714 !important;
+  }
+  .ct-page .ct-why-item h4,
+  .ct-page .ct-why-item p {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    color: #215714 !important;
+    -webkit-text-fill-color: #215714;
+  }
   .ct-map-card { flex-direction: column; align-items: flex-start; gap: 14px; }
   .ct-section { padding: 42px clamp(16px, 5vw, 40px); }
 }
@@ -958,6 +971,9 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   .ct-contact-cards { gap: 10px; }
   .ct-contact-card { padding: 12px 14px; border-radius: 16px; }
   .ct-contact-card__icon { width: 42px; height: 42px; border-radius: 12px; }
+  .ct-page .ct-why-item { padding: 16px; }
+  .ct-page .ct-why-item h4 { font-size: 15px; line-height: 1.35; }
+  .ct-page .ct-why-item p { font-size: 14px; line-height: 1.55; }
   .ct-map-card { padding: 20px 16px; border-radius: 20px; }
   .ct-feedback-box { padding: 28px 18px; border-radius: 22px; }
   .ct-form-card { padding: 24px 18px; border-radius: 24px; }
@@ -967,14 +983,33 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
 .ct-contact-card__val { overflow-wrap: anywhere; }
 
 /* ---------- Testimonials ---------- */
-.tm-filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-.tm-filter-tab { min-height: var(--tap); }
+.tm-filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.tm-filter-tab { min-height: var(--tap); white-space: nowrap; }
 .tm-cards-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
 .tm-btn-primary, .tm-btn-secondary { min-height: var(--tap); }
+/* Ensure review card quote text is always visible */
+.tm-review-card__quote,
+.tm-review-card__title,
+.tm-cta-card__body,
+.tm-cta-card__title,
+.tm-cta-card__highlight {
+  color: inherit;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 @media (max-width: 900px) {
   .tm-growth-grid, .tm-hero__features { grid-template-columns: 1fr !important; }
   .tm-section { padding: clamp(40px, 5vw, 60px) clamp(16px, 4vw, 40px); }
   .tm-trust-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  /* Ensure all testimonial card text stays visible on mobile canvas */
+  .tm-review-card__quote { color: #52614e !important; }
+  .tm-review-card__title { color: #215714 !important; }
+  .tm-cta-card__body { color: #52614e !important; }
+  .tm-cta-card__title { color: #215714 !important; }
+  .tm-cta-card__highlight { color: #215714 !important; }
+  .tm-growth-desc { color: #52614e !important; }
+  .tm-trust-card__desc { color: #52614e !important; }
+  .tm-trust-card__title { color: #215714 !important; }
 }
 @media (max-width: 600px) {
   .tm-hero {
@@ -984,14 +1019,18 @@ footer :focus-visible, .contact-why :focus-visible, .ah :focus-visible { outline
   }
   .tm-section { padding: 42px 18px; }
   .tm-rating-card { padding: 24px 20px; border-radius: 24px; }
-  .tm-review-card { border-radius: 18px; }
+  .tm-review-card { border-radius: 18px; padding: 22px 18px; }
   .tm-cards-grid { grid-template-columns: 1fr !important; gap: 18px; }
   .tm-stats-bar { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 18px 16px; }
   .tm-trust-grid { grid-template-columns: 1fr; }
   .tm-trust-card { padding: 24px 20px; }
-  .tm-cta-card { padding: 32px 20px; border-radius: 28px; }
+  .tm-trust-card__top { flex-wrap: wrap; gap: 8px; }
+  .tm-trust-card__tag { max-width: 70%; font-size: 10px; }
+  .tm-filter-tab { font-size: 12px; padding: 7px 13px; }
+  .tm-reviews-header { margin-bottom: 24px; }
+  .tm-cta-card { padding: 30px 18px; border-radius: 26px; }
   .tm-cta-card__actions { flex-direction: column; align-items: stretch; }
-  .tm-btn-primary, .tm-btn-secondary { justify-content: center; text-align: center; }
+  .tm-btn-primary, .tm-btn-secondary { justify-content: center; text-align: center; width: 100%; }
   .tm-maps-banner { padding: 24px 18px; border-radius: 22px; }
   .tm-maps-banner__btn { width: 100%; justify-content: center; }
 }

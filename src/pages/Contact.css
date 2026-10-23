@@ -398,6 +398,70 @@
   box-shadow: 0 0 0 4px rgba(33, 87, 20, 0.12);
 }
 
+/* =============================
+   Responsive Adjustments for Contact Page
+   ============================= */
+@media (max-width: 760px) {
+  /* Reduce hero padding and font sizes */
+  .ct-hero {
+    padding: clamp(40px, 6vw, 80px) clamp(15px, 4vw, 40px) clamp(30px, 5vw, 60px);
+  }
+  .ct-hero__title {
+    font-size: clamp(28px, 6vw, 48px);
+  }
+  .ct-hero__lead {
+    font-size: clamp(14px, 1.4vw, 18px);
+  }
+  /* Ensure contact cards take full width */
+  .ct-contact-cards {
+    flex-direction: column;
+  }
+  .ct-contact-card {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  /* Why choose grid to two columns */
+  .ct-why-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Form card padding adjustment */
+  .ct-form-card {
+    padding: clamp(20px, 4vw, 36px);
+  }
+}
+
+@media (max-width: 480px) {
+  .ct-hero {
+    padding: clamp(30px, 8vw, 60px) clamp(10px, 4vw, 30px) clamp(20px, 6vw, 50px);
+    text-align: left;
+  }
+  .ct-hero__title {
+    font-size: clamp(24px, 8vw, 40px);
+    text-align: left;
+  }
+  .ct-hero__lead {
+    font-size: clamp(13px, 1.6vw, 16px);
+    text-align: left;
+  }
+  .ct-why-grid {
+    grid-template-columns: 1fr;
+  }
+  .ct-form-card {
+    padding: 20px;
+  }
+  .ct-input, .ct-select, .ct-textarea {
+    font-size: 14px;
+    padding: 12px 14px 12px 38px;
+  }
+  .ct-input-icon {
+    left: 12px;
+  }
+  .ct-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .ct-error {
   display: block;
   font-size: 12px;
